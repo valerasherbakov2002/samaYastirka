@@ -20,197 +20,114 @@
         .page.active { display: block; }
 
         /* Категории */
-        .categories-scroll {
-            display: flex;
-            overflow-x: auto;
-            gap: 8px;
-            padding-bottom: 16px;
-            scrollbar-width: none;
-        }
+        .categories-scroll { display: flex; overflow-x: auto; gap: 8px; padding-bottom: 16px; scrollbar-width: none; }
         .categories-scroll::-webkit-scrollbar { display: none; }
-        
-        .category-chip {
-            background-color: var(--tg-theme-button-color, #3390ec);
-            color: #ffffff;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 14px;
-            white-space: nowrap;
-        }
-        .category-chip.inactive {
-            background-color: var(--tg-theme-secondary-bg-color, #ffffff);
-            color: var(--tg-theme-text-color, #000000);
-            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
-        }
+        .category-chip { background-color: var(--tg-theme-button-color, #3390ec); color: #ffffff; padding: 8px 16px; border-radius: 20px; font-size: 14px; white-space: nowrap; }
+        .category-chip.inactive { background-color: var(--tg-theme-secondary-bg-color, #ffffff); color: var(--tg-theme-text-color, #000000); box-shadow: 0 1px 2px rgba(0,0,0,0.05); }
 
-        /* Вытянутые карточки товаров */
-        .products-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-        }
-        .product-card {
-            background-color: var(--tg-theme-secondary-bg-color, #ffffff);
-            border-radius: 16px;
-            overflow: hidden;
-            position: relative;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-            cursor: pointer;
-        }
-        .product-image {
-            width: 100%;
-            aspect-ratio: 3 / 4;
-            object-fit: cover;
-            background-color: #f0f0f0;
-            display: block;
-        }
-        .favorite-btn {
-            position: absolute;
-            top: 8px;
-            right: 8px;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 50%;
-            width: 28px;
-            height: 28px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
+        /* Карточки товаров */
+        .products-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .product-card { background-color: var(--tg-theme-secondary-bg-color, #ffffff); border-radius: 16px; overflow: hidden; position: relative; box-shadow: 0 1px 3px rgba(0,0,0,0.05); cursor: pointer; }
+        .product-image { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; background-color: #f0f0f0; display: block; }
+        .favorite-btn { position: absolute; top: 8px; right: 8px; background: rgba(255, 255, 255, 0.9); border-radius: 50%; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; font-size: 14px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
         .product-info { padding: 12px; }
-        .price-block {
-            display: flex;
-            align-items: baseline;
-            gap: 6px;
-            margin-bottom: 4px;
-        }
+        .price-block { display: flex; align-items: baseline; gap: 6px; margin-bottom: 4px; }
         .current-price { font-weight: 700; font-size: 16px; }
         .old-price { text-decoration: line-through; color: #999; font-size: 12px; }
         .product-title { font-size: 13px; line-height: 1.3; }
 
-        /* Всплывающее окно товара (Детальная страница) */
-        .product-modal {
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-color: var(--tg-theme-bg-color, #f4f4f5);
-            z-index: 100;
-            display: none;
-            flex-direction: column;
-            overflow-y: auto;
-            padding-bottom: 90px; 
-        }
+        /* Модальное окно товара */
+        .product-modal { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: var(--tg-theme-bg-color, #f4f4f5); z-index: 100; display: none; flex-direction: column; overflow-y: auto; padding-bottom: 90px; }
         .product-modal.active { display: flex; }
-        
-        .modal-header {
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            padding: 16px;
-            display: flex;
-            justify-content: space-between;
-            z-index: 10;
-        }
-        .round-btn {
-            background: rgba(255, 255, 255, 0.8);
-            border: none;
-            border-radius: 50%;
-            width: 36px; height: 36px;
-            font-size: 18px;
-            display: flex; align-items: center; justify-content: center;
-            cursor: pointer;
-        }
-        .modal-image {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-        
-        .modal-content-block {
-            background-color: var(--tg-theme-secondary-bg-color, #ffffff);
-            padding: 16px;
-            margin-top: -16px;
-            border-radius: 16px 16px 0 0;
-            position: relative;
-            z-index: 5;
-        }
-        
-        /* Выбор вместимости */
-        .capacity-section {
-            margin: 16px 0;
-            padding-bottom: 16px;
-            border-bottom: 1px solid #eee;
-        }
-        .section-title {
-            font-size: 13px;
-            color: #777;
-            margin-bottom: 12px;
-        }
-        .capacity-btns {
-            display: flex;
-            gap: 12px;
-        }
-        .cap-btn {
-            padding: 10px 20px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            background: transparent;
-            color: var(--tg-theme-text-color, #000);
-            font-weight: 600;
-            font-size: 14px;
-            cursor: pointer;
-        }
-        .cap-btn.active {
-            border: 2px solid var(--tg-theme-button-color, #3390ec);
-            color: var(--tg-theme-button-color, #3390ec);
-            padding: 9px 19px; 
-        }
-        
-        /* Описание и цена в модальном окне */
+        .modal-header { position: absolute; top: 0; left: 0; right: 0; padding: 16px; display: flex; justify-content: space-between; z-index: 10; }
+        .round-btn { background: rgba(255, 255, 255, 0.8); border: none; border-radius: 50%; width: 36px; height: 36px; font-size: 18px; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+        .modal-image { width: 100%; height: auto; display: block; }
+        .modal-content-block { background-color: var(--tg-theme-secondary-bg-color, #ffffff); padding: 16px; margin-top: -16px; border-radius: 16px 16px 0 0; position: relative; z-index: 5; }
+        .capacity-section { margin: 16px 0; padding-bottom: 16px; border-bottom: 1px solid #eee; }
+        .section-title { font-size: 13px; color: #777; margin-bottom: 12px; }
+        .capacity-btns { display: flex; gap: 12px; }
+        .cap-btn { padding: 10px 20px; border: 1px solid #ccc; border-radius: 8px; background: transparent; color: var(--tg-theme-text-color, #000); font-weight: 600; font-size: 14px; cursor: pointer; }
+        .cap-btn.active { border: 2px solid var(--tg-theme-button-color, #3390ec); color: var(--tg-theme-button-color, #3390ec); padding: 9px 19px; }
         .modal-title-block { margin-top: 16px; }
         .modal-main-title { font-size: 22px; font-weight: bold; margin: 0 0 8px 0; }
         .modal-price-row { display: flex; align-items: baseline; gap: 8px; margin-bottom: 16px; }
         .modal-curr-price { font-size: 24px; font-weight: bold; }
         .modal-old-price { font-size: 16px; text-decoration: line-through; color: #999; }
-        
         .modal-desc-title { font-weight: bold; font-size: 16px; margin-bottom: 8px; }
         .modal-desc-text { font-size: 14px; line-height: 1.5; color: #444; }
+        .bottom-action-bar { position: fixed; bottom: 0; left: 0; right: 0; background: var(--tg-theme-bg-color, #f4f4f5); padding: 16px; z-index: 10; }
+        .order-btn { width: 100%; padding: 16px; background-color: var(--tg-theme-button-color, #3390ec); color: #ffffff; border: none; border-radius: 12px; font-size: 16px; font-weight: bold; cursor: pointer; }
 
-        /* Плавающая кнопка "Оформить заказ" */
-        .bottom-action-bar {
-            position: fixed;
-            bottom: 0; left: 0; right: 0;
-            background: var(--tg-theme-bg-color, #f4f4f5);
-            padding: 16px;
-            z-index: 10;
-        }
-        .order-btn {
-            width: 100%;
-            padding: 16px;
-            background-color: var(--tg-theme-button-color, #3390ec);
-            color: #ffffff;
-            border: none;
-            border-radius: 12px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        /* Профиль, Лояльность, Контакты и Навигация */
+        /* --- ОБНОВЛЕННЫЙ ПРОФИЛЬ И ЛОЯЛЬНОСТЬ --- */
         .profile-header { text-align: center; padding: 20px 0; }
-        .profile-avatar { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 12px; background-color: #ccc; }
-        .loyalty-card { background-color: var(--tg-theme-secondary-bg-color, #ffffff); border-radius: 12px; padding: 20px; text-align: center; margin-top: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        /* Увеличенный аватар с рамкой */
+        .profile-avatar { 
+            width: 130px; 
+            height: 130px; 
+            border-radius: 50%; 
+            object-fit: cover; 
+            margin-bottom: 12px; 
+            background-color: #ccc; 
+            border: 3px solid var(--tg-theme-button-color, #3390ec);
+            padding: 2px;
+        }
+        .loyalty-card { background-color: var(--tg-theme-secondary-bg-color, #ffffff); border-radius: 12px; padding: 20px; text-align: center; margin-top: 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        
+        /* Шкала прогресса */
+        .progress-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 24px; text-align: left; }
+        .progress-title { font-size: 14px; color: var(--tg-theme-hint-color, #999); }
+        .progress-discount { font-size: 20px; font-weight: bold; color: var(--tg-theme-button-color, #3390ec); }
+        .progress-subtitle { font-size: 12px; color: var(--tg-theme-hint-color, #999); text-align: right; }
+        
+        .progress-track {
+            height: 8px;
+            background-color: var(--tg-theme-bg-color, #f4f4f5);
+            border-radius: 4px;
+            position: relative;
+            margin: 0 10px 40px 10px;
+        }
+        .progress-fill {
+            height: 100%;
+            background-color: var(--tg-theme-button-color, #3390ec);
+            border-radius: 4px;
+            width: 0%; /* Задается через JS */
+            transition: width 0.8s ease-out;
+        }
+        .milestone {
+            position: absolute;
+            top: -4px; /* Центрирование кружочка на линии */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transform: translateX(-50%);
+        }
+        .milestone-dot {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: var(--tg-theme-bg-color, #f4f4f5);
+            border: 2px solid #d1d1d6;
+            z-index: 2;
+            transition: all 0.3s;
+        }
+        .milestone.reached .milestone-dot {
+            background-color: var(--tg-theme-button-color, #3390ec);
+            border-color: var(--tg-theme-button-color, #3390ec);
+        }
+        .milestone-text {
+            margin-top: 8px;
+            font-size: 11px;
+            color: var(--tg-theme-hint-color, #999);
+            white-space: nowrap;
+        }
+        .milestone.reached .milestone-text { color: var(--tg-theme-text-color, #000); font-weight: 500; }
+        
         #qrcode { display: flex; justify-content: center; margin: 20px 0; }
+        
+        /* Контакты и Навигация */
         .contact-block { background-color: var(--tg-theme-secondary-bg-color, #ffffff); border-radius: 12px; padding: 16px; margin-bottom: 12px; }
         .contact-link { color: var(--tg-theme-button-color, #3390ec); text-decoration: none; font-weight: bold; }
-        
-        .tab-bar {
-            position: fixed;
-            bottom: 0; left: 0; right: 0;
-            background-color: var(--tg-theme-secondary-bg-color, #ffffff);
-            display: flex; justify-content: space-around; padding: 10px 0;
-            border-top: 1px solid #e5e5ea;
-            z-index: 50;
-        }
+        .tab-bar { position: fixed; bottom: 0; left: 0; right: 0; background-color: var(--tg-theme-secondary-bg-color, #ffffff); display: flex; justify-content: space-around; padding: 10px 0; border-top: 1px solid #e5e5ea; z-index: 50; }
         .tab { text-align: center; color: #999; font-size: 12px; cursor: pointer; flex: 1; }
         .tab.active { color: var(--tg-theme-button-color, #3390ec); }
         .tab-icon { font-size: 24px; display: block; margin-bottom: 4px; }
@@ -218,7 +135,7 @@
 </head>
 <body>
 
-    <!-- СТРАНИЦА 1: Каталог -->
+    <!-- СТРАНИЦА 1: Каталог (Без изменений) -->
     <div id="catalog" class="page active">
         <div class="categories-scroll">
             <div class="category-chip">Категории ˅</div>
@@ -227,46 +144,32 @@
         </div>
         
         <div class="products-grid">
-            <!-- Зимняя одежда -->
             <div class="product-card" onclick="openProduct('winter')">
                 <div class="favorite-btn">🤍</div>
                 <img src="Gemini_Generated_Image_yytp2lyytp2lyytp.jpeg" alt="Зимняя одежда" class="product-image">
                 <div class="product-info">
-                    <div class="price-block">
-                        <span class="current-price">300 ₽</span>
-                        <span class="old-price">500 ₽</span>
-                    </div>
+                    <div class="price-block"><span class="current-price">300 ₽</span><span class="old-price">500 ₽</span></div>
                     <div class="product-title">Зимняя одежда</div>
                 </div>
             </div>
-
-            <!-- Постельное белье -->
             <div class="product-card" onclick="openProduct('bedding')">
                 <div class="favorite-btn">🤍</div>
                 <img src="Gemini_Generated_Image_z0rl3zz0rl3zz0rl.jpeg" alt="Постельное белье" class="product-image">
                 <div class="product-info">
-                    <div class="price-block">
-                        <span class="current-price">300 ₽</span>
-                        <span class="old-price">500 ₽</span>
-                    </div>
+                    <div class="price-block"><span class="current-price">300 ₽</span><span class="old-price">500 ₽</span></div>
                     <div class="product-title">Постельное белье</div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- ДЕТАЛЬНАЯ СТРАНИЦА ТОВАРА (Модальное окно) -->
+    <!-- ДЕТАЛЬНАЯ СТРАНИЦА ТОВАРА -->
     <div id="product-modal" class="product-modal">
         <div class="modal-header">
             <button class="round-btn" onclick="closeProduct()">←</button>
-            <div style="display: flex; gap: 8px;">
-                <button class="round-btn">🤍</button>
-                <button class="round-btn">↗</button>
-            </div>
+            <div style="display: flex; gap: 8px;"><button class="round-btn">🤍</button><button class="round-btn">↗</button></div>
         </div>
-        
         <img id="modal-img" src="" alt="Товар" class="modal-image">
-        
         <div class="modal-content-block">
             <div class="capacity-section">
                 <div class="section-title">Вместимость профессиональной стиральной машины:</div>
@@ -275,40 +178,80 @@
                     <button id="btn-15" class="cap-btn" onclick="setCapacity(15)">15 кг</button>
                 </div>
             </div>
-
             <div class="modal-title-block">
                 <h2 id="modal-main-title" class="modal-main-title"></h2>
                 <div class="modal-price-row">
                     <span id="modal-curr-price" class="modal-curr-price"></span>
                     <span id="modal-old-price" class="modal-old-price"></span>
                 </div>
-                
                 <div class="modal-desc-title">Описание товара</div>
                 <div id="modal-desc-text" class="modal-desc-text"></div>
             </div>
         </div>
-
         <div class="bottom-action-bar">
             <button class="order-btn" onclick="tg.showAlert('Переход к оформлению заказа')">Оформить заказ</button>
         </div>
     </div>
 
-    <!-- СТРАНИЦА 2: Профиль и Лояльность -->
+    <!-- СТРАНИЦА 2: Профиль и Лояльность (ОБНОВЛЕНО) -->
     <div id="loyalty" class="page">
         <div class="profile-header">
-            <img id="user-avatar" class="profile-avatar" src="https://via.placeholder.com/100" alt="Аватар">
+            <img id="user-avatar" class="profile-avatar" src="https://via.placeholder.com/130" alt="Аватар">
             <h2 id="user-name">Загрузка...</h2>
         </div>
+        
         <div class="loyalty-card">
-            <h3>Ваша карта лояльности</h3>
-            <p>Количество стирок: <strong>3</strong></p>
+            
+            <div class="progress-header">
+                <div>
+                    <div class="progress-title">Ваша скидка</div>
+                    <div id="current-discount" class="progress-discount">0%</div>
+                </div>
+                <div>
+                    <div class="progress-title">Количество стирок</div>
+                    <div id="total-washes" class="progress-discount" style="color: var(--tg-theme-text-color, #000); text-align: right;">3</div>
+                </div>
+            </div>
+
+            <!-- Горизонтальная шкала -->
+            <div class="progress-track">
+                <div id="progress-fill" class="progress-fill"></div>
+                <!-- Точки на шкале (0, 20%, 40%, 60%, 80%, 100%) -->
+                <div class="milestone" style="left: 0%;" id="ms-0">
+                    <div class="milestone-dot"></div>
+                    <div class="milestone-text">0</div>
+                </div>
+                <div class="milestone" style="left: 20%;" id="ms-1">
+                    <div class="milestone-dot"></div>
+                    <div class="milestone-text">5 <span style="color:#3390ec">1%</span></div>
+                </div>
+                <div class="milestone" style="left: 40%;" id="ms-2">
+                    <div class="milestone-dot"></div>
+                    <div class="milestone-text">10 <span style="color:#3390ec">3%</span></div>
+                </div>
+                <div class="milestone" style="left: 60%;" id="ms-3">
+                    <div class="milestone-dot"></div>
+                    <div class="milestone-text">20 <span style="color:#3390ec">5%</span></div>
+                </div>
+                <div class="milestone" style="left: 80%;" id="ms-4">
+                    <div class="milestone-dot"></div>
+                    <div class="milestone-text">50 <span style="color:#3390ec">10%</span></div>
+                </div>
+                <div class="milestone" style="left: 100%;" id="ms-5">
+                    <div class="milestone-dot"></div>
+                    <div class="milestone-text">100 <span style="color:#3390ec">20%</span></div>
+                </div>
+            </div>
+            
+            <div id="next-tier-info" class="progress-subtitle" style="text-align: center; margin-bottom: 20px;"></div>
+
             <p style="font-size: 14px; color: gray;">Покажите этот QR-код администратору</p>
             <div id="qrcode"></div>
             <p id="user-id-text" style="font-size: 12px; color: gray;"></p>
         </div>
     </div>
 
-    <!-- СТРАНИЦА 3: Контакты -->
+    <!-- СТРАНИЦА 3: Контакты (Без изменений) -->
     <div id="contacts" class="page">
         <h2>Связь с нами</h2>
         <div class="contact-block"><strong>📞 Телефон:</strong><br><br><a href="tel:+79991234567" class="contact-link">+7 (999) 123-45-67</a></div>
@@ -327,53 +270,33 @@
         const tg = window.Telegram.WebApp;
         tg.expand();
 
-        // База данных товаров
         const productsData = {
-            winter: {
-                title: "Зимняя одежда",
-                image: "Gemini_Generated_Image_yytp2lyytp2lyytp.jpeg",
-                desc: "Стирка объемной зимней одежды в профессиональной стиральной машине ☃️",
-                prices: {
-                    12: { curr: "300 ₽", old: "500 ₽" },
-                    15: { curr: "350 ₽", old: "650 ₽" }
-                }
-            },
-            bedding: {
-                title: "Постельное белье",
-                image: "Gemini_Generated_Image_z0rl3zz0rl3zz0rl.jpeg",
-                desc: "Стирка постельного белья в профессиональной стиральной машине 🛏️",
-                prices: {
-                    12: { curr: "300 ₽", old: "500 ₽" },
-                    15: { curr: "350 ₽", old: "650 ₽" }
-                }
-            }
+            winter: { title: "Зимняя одежда", image: "Gemini_Generated_Image_yytp2lyytp2lyytp.jpeg", desc: "Стирка объемной зимней одежды в профессиональной стиральной машине ☃️", prices: { 12: { curr: "300 ₽", old: "500 ₽" }, 15: { curr: "350 ₽", old: "650 ₽" } } },
+            bedding: { title: "Постельное белье", image: "Gemini_Generated_Image_z0rl3zz0rl3zz0rl.jpeg", desc: "Стирка постельного белья в профессиональной стиральной машине 🛏️", prices: { 12: { curr: "300 ₽", old: "500 ₽" }, 15: { curr: "350 ₽", old: "650 ₽" } } }
         };
+        let currentProductId = 'winter';
 
-        let currentProductId = 'winter'; // Переменная для хранения текущего открытого товара
-
-        // Переключение вкладок в нижнем меню
         function switchTab(pageId, tabElement) {
             document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
             document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
             document.getElementById(pageId).classList.add('active');
             tabElement.classList.add('active');
+            
+            // Если открыли профиль, обновляем шкалу с анимацией (визуальный эффект)
+            if (pageId === 'loyalty') {
+                updateLoyaltyProgress(3); // 3 - это количество стирок для примера
+            }
         }
 
-        // Открытие детальной страницы товара
         function openProduct(type) {
             currentProductId = type;
             const data = productsData[type];
-            
-            // Подстановка нужных данных (картинка, заголовок, описание)
             document.getElementById('modal-img').src = data.image;
             document.getElementById('modal-main-title').innerText = data.title;
             document.getElementById('modal-desc-text').innerText = data.desc;
-
-            // По умолчанию выбираем 12 кг
             setCapacity(12);
-
             document.getElementById('product-modal').classList.add('active');
-            document.body.style.overflow = 'hidden'; // Запрет прокрутки заднего фона
+            document.body.style.overflow = 'hidden';
         }
 
         function closeProduct() {
@@ -381,38 +304,72 @@
             document.body.style.overflow = '';
         }
 
-        // Логика переключения цен в зависимости от веса и текущего товара
         function setCapacity(weight) {
-            const btn12 = document.getElementById('btn-12');
-            const btn15 = document.getElementById('btn-15');
-            const currPrice = document.getElementById('modal-curr-price');
-            const oldPrice = document.getElementById('modal-old-price');
-
-            // Берем цены для текущего товара
+            const btn12 = document.getElementById('btn-12'), btn15 = document.getElementById('btn-15');
             const data = productsData[currentProductId].prices[weight];
-
-            if (weight === 12) {
-                btn12.classList.add('active');
-                btn15.classList.remove('active');
-            } else if (weight === 15) {
-                btn15.classList.add('active');
-                btn12.classList.remove('active');
-            }
-
-            // Устанавливаем цену
-            currPrice.innerText = data.curr;
-            oldPrice.innerText = data.old;
+            if (weight === 12) { btn12.classList.add('active'); btn15.classList.remove('active'); } 
+            else { btn15.classList.add('active'); btn12.classList.remove('active'); }
+            document.getElementById('modal-curr-price').innerText = data.curr;
+            document.getElementById('modal-old-price').innerText = data.old;
         }
 
-        // Инициализация данных пользователя Telegram
+        // ЛОГИКА ШКАЛЫ ПРОГРЕССА
+        function updateLoyaltyProgress(currentWashes) {
+            const tiers = [
+                { washes: 0, discount: 0 },
+                { washes: 5, discount: 1 },
+                { washes: 10, discount: 3 },
+                { washes: 20, discount: 5 },
+                { washes: 50, discount: 10 },
+                { washes: 100, discount: 20 }
+            ];
+
+            let currentDiscount = 0;
+            let progressPercent = 0;
+            let nextTierInfo = "Максимальная скидка достигнута!";
+
+            document.getElementById('total-washes').innerText = currentWashes;
+
+            for (let i = 0; i < tiers.length; i++) {
+                // Отмечаем пройденные точки
+                if (currentWashes >= tiers[i].washes) {
+                    currentDiscount = tiers[i].discount;
+                    document.getElementById('ms-' + i).classList.add('reached');
+                    
+                    // Вычисляем процент заполнения шкалы между точками (каждый отрезок это 20% ширины)
+                    if (i < tiers.length - 1) {
+                        const nextTier = tiers[i + 1];
+                        const washesInThisSegment = currentWashes - tiers[i].washes;
+                        const totalWashesForSegment = nextTier.washes - tiers[i].washes;
+                        const segmentProgress = washesInThisSegment / totalWashesForSegment;
+                        
+                        progressPercent = (i * 20) + (segmentProgress * 20);
+                        
+                        // Текст "Осталось X стирок"
+                        nextTierInfo = `До скидки ${nextTier.discount}% осталось стирок: ${nextTier.washes - currentWashes}`;
+                    } else {
+                        progressPercent = 100;
+                    }
+                }
+            }
+
+            document.getElementById('current-discount').innerText = currentDiscount + '%';
+            document.getElementById('next-tier-info').innerText = nextTierInfo;
+            
+            // Задержка нужна, чтобы сработала CSS анимация выезда ползунка
+            setTimeout(() => {
+                document.getElementById('progress-fill').style.width = progressPercent + '%';
+            }, 100);
+        }
+
+        // Инициализация Telegram данных
         const user = tg.initDataUnsafe?.user;
         if (user) {
             document.getElementById('user-name').innerText = user.first_name + (user.last_name ? ' ' + user.last_name : '');
             if (user.photo_url) document.getElementById('user-avatar').src = user.photo_url;
             document.getElementById('user-id-text').innerText = 'ID: ' + user.id;
             new QRCode(document.getElementById("qrcode"), {
-                text: user.id.toString(),
-                width: 150, height: 150,
+                text: user.id.toString(), width: 150, height: 150,
                 colorDark : "#000000", colorLight : "#ffffff", correctLevel : QRCode.CorrectLevel.H
             });
         } else {
