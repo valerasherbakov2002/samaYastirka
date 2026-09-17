@@ -59,7 +59,7 @@
         }
         .product-image {
             width: 100%;
-            aspect-ratio: 3 / 4; /* Делает фото вытянутым в высоту */
+            aspect-ratio: 3 / 4;
             object-fit: cover;
             background-color: #f0f0f0;
             display: block;
@@ -162,7 +162,7 @@
         .cap-btn.active {
             border: 2px solid var(--tg-theme-button-color, #3390ec);
             color: var(--tg-theme-button-color, #3390ec);
-            padding: 9px 19px; /* компенсация толщины рамки */
+            padding: 9px 19px; 
         }
         
         /* Описание и цена в модальном окне */
@@ -241,7 +241,7 @@
             </div>
 
             <!-- Постельное белье -->
-            <div class="product-card">
+            <div class="product-card" onclick="openProduct('bedding')">
                 <div class="favorite-btn">🤍</div>
                 <img src="Gemini_Generated_Image_z0rl3zz0rl3zz0rl.jpeg" alt="Постельное белье" class="product-image">
                 <div class="product-info">
@@ -265,7 +265,7 @@
             </div>
         </div>
         
-        <img id="modal-img" src="Gemini_Generated_Image_yytp2lyytp2lyytp.jpeg" alt="Товар" class="modal-image">
+        <img id="modal-img" src="" alt="Товар" class="modal-image">
         
         <div class="modal-content-block">
             <div class="capacity-section">
@@ -277,16 +277,14 @@
             </div>
 
             <div class="modal-title-block">
-                <h2 class="modal-main-title">Зимняя одежда</h2>
+                <h2 id="modal-main-title" class="modal-main-title"></h2>
                 <div class="modal-price-row">
-                    <span id="modal-curr-price" class="modal-curr-price">300 ₽</span>
-                    <span id="modal-old-price" class="modal-old-price">500 ₽</span>
+                    <span id="modal-curr-price" class="modal-curr-price"></span>
+                    <span id="modal-old-price" class="modal-old-price"></span>
                 </div>
                 
                 <div class="modal-desc-title">Описание товара</div>
-                <div class="modal-desc-text">
-                    Стирка объемной зимней одежды в профессиональной стиральной машине ☃️
-                </div>
+                <div id="modal-desc-text" class="modal-desc-text"></div>
             </div>
         </div>
 
@@ -329,6 +327,30 @@
         const tg = window.Telegram.WebApp;
         tg.expand();
 
+        // База данных товаров
+        const productsData = {
+            winter: {
+                title: "Зимняя одежда",
+                image: "Gemini_Generated_Image_yytp2lyytp2lyytp.jpeg",
+                desc: "Стирка объемной зимней одежды в профессиональной стиральной машине ☃️",
+                prices: {
+                    12: { curr: "300 ₽", old: "500 ₽" },
+                    15: { curr: "350 ₽", old: "650 ₽" }
+                }
+            },
+            bedding: {
+                title: "Постельное белье",
+                image: "Gemini_Generated_Image_z0rl3zz0rl3zz0rl.jpeg",
+                desc: "Стирка постельного белья в профессиональной стиральной машине 🛏️",
+                prices: {
+                    12: { curr: "300 ₽", old: "500 ₽" },
+                    15: { curr: "350 ₽", old: "650 ₽" }
+                }
+            }
+        };
+
+        let currentProductId = 'winter'; // Переменная для хранения текущего открытого товара
+
         // Переключение вкладок в нижнем меню
         function switchTab(pageId, tabElement) {
             document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
@@ -337,8 +359,19 @@
             tabElement.classList.add('active');
         }
 
-        // Открытие и закрытие детальной страницы товара
+        // Открытие детальной страницы товара
         function openProduct(type) {
+            currentProductId = type;
+            const data = productsData[type];
+            
+            // Подстановка нужных данных (картинка, заголовок, описание)
+            document.getElementById('modal-img').src = data.image;
+            document.getElementById('modal-main-title').innerText = data.title;
+            document.getElementById('modal-desc-text').innerText = data.desc;
+
+            // По умолчанию выбираем 12 кг
+            setCapacity(12);
+
             document.getElementById('product-modal').classList.add('active');
             document.body.style.overflow = 'hidden'; // Запрет прокрутки заднего фона
         }
@@ -346,27 +379,29 @@
         function closeProduct() {
             document.getElementById('product-modal').classList.remove('active');
             document.body.style.overflow = '';
-            setCapacity(12); // Возврат к 12кг при закрытии
         }
 
-        // Логика переключения цен и активной кнопки
+        // Логика переключения цен в зависимости от веса и текущего товара
         function setCapacity(weight) {
             const btn12 = document.getElementById('btn-12');
             const btn15 = document.getElementById('btn-15');
             const currPrice = document.getElementById('modal-curr-price');
             const oldPrice = document.getElementById('modal-old-price');
 
+            // Берем цены для текущего товара
+            const data = productsData[currentProductId].prices[weight];
+
             if (weight === 12) {
                 btn12.classList.add('active');
                 btn15.classList.remove('active');
-                currPrice.innerText = '300 ₽';
-                oldPrice.innerText = '500 ₽';
             } else if (weight === 15) {
                 btn15.classList.add('active');
                 btn12.classList.remove('active');
-                currPrice.innerText = '350 ₽';
-                oldPrice.innerText = '650 ₽';
             }
+
+            // Устанавливаем цену
+            currPrice.innerText = data.curr;
+            oldPrice.innerText = data.old;
         }
 
         // Инициализация данных пользователя Telegram
