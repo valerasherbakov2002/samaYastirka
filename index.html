@@ -58,12 +58,12 @@
         .bottom-action-bar { position: fixed; bottom: 0; left: 0; right: 0; background: var(--tg-theme-bg-color, #f4f4f5); padding: 16px; z-index: 10; }
         .order-btn { width: 100%; padding: 16px; background-color: var(--tg-theme-button-color, #3390ec); color: #ffffff; border: none; border-radius: 12px; font-size: 16px; font-weight: bold; cursor: pointer; }
 
-        /* --- ОБНОВЛЕННЫЙ ПРОФИЛЬ И ЛОЯЛЬНОСТЬ --- */
+        /* ПРОФИЛЬ И ЛОЯЛЬНОСТЬ */
         .profile-header { text-align: center; padding: 20px 0; }
-        /* Увеличенный аватар с рамкой */
+        /* Еще больше увеличенный аватар */
         .profile-avatar { 
-            width: 130px; 
-            height: 130px; 
+            width: 150px; 
+            height: 150px; 
             border-radius: 50%; 
             object-fit: cover; 
             margin-bottom: 12px; 
@@ -73,60 +73,52 @@
         }
         .loyalty-card { background-color: var(--tg-theme-secondary-bg-color, #ffffff); border-radius: 12px; padding: 20px; text-align: center; margin-top: 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
         
-        /* Шкала прогресса */
         .progress-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 24px; text-align: left; }
         .progress-title { font-size: 14px; color: var(--tg-theme-hint-color, #999); }
         .progress-discount { font-size: 20px; font-weight: bold; color: var(--tg-theme-button-color, #3390ec); }
         .progress-subtitle { font-size: 12px; color: var(--tg-theme-hint-color, #999); text-align: right; }
         
-        .progress-track {
-            height: 8px;
-            background-color: var(--tg-theme-bg-color, #f4f4f5);
-            border-radius: 4px;
-            position: relative;
-            margin: 0 10px 40px 10px;
-        }
-        .progress-fill {
-            height: 100%;
-            background-color: var(--tg-theme-button-color, #3390ec);
-            border-radius: 4px;
-            width: 0%; /* Задается через JS */
-            transition: width 0.8s ease-out;
-        }
-        .milestone {
-            position: absolute;
-            top: -4px; /* Центрирование кружочка на линии */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            transform: translateX(-50%);
-        }
-        .milestone-dot {
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            background-color: var(--tg-theme-bg-color, #f4f4f5);
-            border: 2px solid #d1d1d6;
-            z-index: 2;
-            transition: all 0.3s;
-        }
-        .milestone.reached .milestone-dot {
-            background-color: var(--tg-theme-button-color, #3390ec);
-            border-color: var(--tg-theme-button-color, #3390ec);
-        }
-        .milestone-text {
-            margin-top: 8px;
-            font-size: 11px;
-            color: var(--tg-theme-hint-color, #999);
-            white-space: nowrap;
-        }
+        .progress-track { height: 8px; background-color: var(--tg-theme-bg-color, #f4f4f5); border-radius: 4px; position: relative; margin: 0 10px 40px 10px; }
+        .progress-fill { height: 100%; background-color: var(--tg-theme-button-color, #3390ec); border-radius: 4px; width: 0%; transition: width 0.8s ease-out; }
+        .milestone { position: absolute; top: -4px; display: flex; flex-direction: column; align-items: center; transform: translateX(-50%); }
+        .milestone-dot { width: 16px; height: 16px; border-radius: 50%; background-color: var(--tg-theme-bg-color, #f4f4f5); border: 2px solid #d1d1d6; z-index: 2; transition: all 0.3s; }
+        .milestone.reached .milestone-dot { background-color: var(--tg-theme-button-color, #3390ec); border-color: var(--tg-theme-button-color, #3390ec); }
+        .milestone-text { margin-top: 8px; font-size: 11px; color: var(--tg-theme-hint-color, #999); white-space: nowrap; }
         .milestone.reached .milestone-text { color: var(--tg-theme-text-color, #000); font-weight: 500; }
         
         #qrcode { display: flex; justify-content: center; margin: 20px 0; }
         
-        /* Контакты и Навигация */
-        .contact-block { background-color: var(--tg-theme-secondary-bg-color, #ffffff); border-radius: 12px; padding: 16px; margin-bottom: 12px; }
-        .contact-link { color: var(--tg-theme-button-color, #3390ec); text-decoration: none; font-weight: bold; }
+        /* КОНТАКТЫ */
+        #contacts { text-align: center; } /* Центрирование всей страницы контактов */
+        .contact-block { 
+            background-color: var(--tg-theme-secondary-bg-color, #ffffff); 
+            border-radius: 12px; 
+            padding: 16px; 
+            margin-bottom: 12px; 
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        
+        /* Стили для номеров телефонов (без синего цвета, кликабельные, копируемые) */
+        .phone-link {
+            color: var(--tg-theme-text-color, #000000); 
+            text-decoration: none; 
+            font-size: 16px;
+            font-weight: 500;
+            display: inline-block;
+            margin-bottom: 8px;
+            user-select: text; /* Разрешает выделение и копирование */
+            -webkit-user-select: text;
+        }
+        
+        /* Стиль для ссылки Telegram */
+        .contact-link { 
+            color: var(--tg-theme-button-color, #3390ec); 
+            text-decoration: none; 
+            font-weight: bold; 
+            font-size: 16px;
+        }
+
+        /* Навигация */
         .tab-bar { position: fixed; bottom: 0; left: 0; right: 0; background-color: var(--tg-theme-secondary-bg-color, #ffffff); display: flex; justify-content: space-around; padding: 10px 0; border-top: 1px solid #e5e5ea; z-index: 50; }
         .tab { text-align: center; color: #999; font-size: 12px; cursor: pointer; flex: 1; }
         .tab.active { color: var(--tg-theme-button-color, #3390ec); }
@@ -135,7 +127,7 @@
 </head>
 <body>
 
-    <!-- СТРАНИЦА 1: Каталог (Без изменений) -->
+    <!-- СТРАНИЦА 1: Каталог -->
     <div id="catalog" class="page active">
         <div class="categories-scroll">
             <div class="category-chip">Категории ˅</div>
@@ -193,15 +185,14 @@
         </div>
     </div>
 
-    <!-- СТРАНИЦА 2: Профиль и Лояльность (ОБНОВЛЕНО) -->
+    <!-- СТРАНИЦА 2: Профиль и Лояльность -->
     <div id="loyalty" class="page">
         <div class="profile-header">
-            <img id="user-avatar" class="profile-avatar" src="https://via.placeholder.com/130" alt="Аватар">
+            <img id="user-avatar" class="profile-avatar" src="https://via.placeholder.com/150" alt="Аватар">
             <h2 id="user-name">Загрузка...</h2>
         </div>
         
         <div class="loyalty-card">
-            
             <div class="progress-header">
                 <div>
                     <div class="progress-title">Ваша скидка</div>
@@ -213,34 +204,14 @@
                 </div>
             </div>
 
-            <!-- Горизонтальная шкала -->
             <div class="progress-track">
                 <div id="progress-fill" class="progress-fill"></div>
-                <!-- Точки на шкале (0, 20%, 40%, 60%, 80%, 100%) -->
-                <div class="milestone" style="left: 0%;" id="ms-0">
-                    <div class="milestone-dot"></div>
-                    <div class="milestone-text">0</div>
-                </div>
-                <div class="milestone" style="left: 20%;" id="ms-1">
-                    <div class="milestone-dot"></div>
-                    <div class="milestone-text">5 <span style="color:#3390ec">1%</span></div>
-                </div>
-                <div class="milestone" style="left: 40%;" id="ms-2">
-                    <div class="milestone-dot"></div>
-                    <div class="milestone-text">10 <span style="color:#3390ec">3%</span></div>
-                </div>
-                <div class="milestone" style="left: 60%;" id="ms-3">
-                    <div class="milestone-dot"></div>
-                    <div class="milestone-text">20 <span style="color:#3390ec">5%</span></div>
-                </div>
-                <div class="milestone" style="left: 80%;" id="ms-4">
-                    <div class="milestone-dot"></div>
-                    <div class="milestone-text">50 <span style="color:#3390ec">10%</span></div>
-                </div>
-                <div class="milestone" style="left: 100%;" id="ms-5">
-                    <div class="milestone-dot"></div>
-                    <div class="milestone-text">100 <span style="color:#3390ec">20%</span></div>
-                </div>
+                <div class="milestone" style="left: 0%;" id="ms-0"><div class="milestone-dot"></div><div class="milestone-text">0</div></div>
+                <div class="milestone" style="left: 20%;" id="ms-1"><div class="milestone-dot"></div><div class="milestone-text">5 <span style="color:#3390ec">1%</span></div></div>
+                <div class="milestone" style="left: 40%;" id="ms-2"><div class="milestone-dot"></div><div class="milestone-text">10 <span style="color:#3390ec">3%</span></div></div>
+                <div class="milestone" style="left: 60%;" id="ms-3"><div class="milestone-dot"></div><div class="milestone-text">20 <span style="color:#3390ec">5%</span></div></div>
+                <div class="milestone" style="left: 80%;" id="ms-4"><div class="milestone-dot"></div><div class="milestone-text">50 <span style="color:#3390ec">10%</span></div></div>
+                <div class="milestone" style="left: 100%;" id="ms-5"><div class="milestone-dot"></div><div class="milestone-text">100 <span style="color:#3390ec">20%</span></div></div>
             </div>
             
             <div id="next-tier-info" class="progress-subtitle" style="text-align: center; margin-bottom: 20px;"></div>
@@ -251,12 +222,25 @@
         </div>
     </div>
 
-    <!-- СТРАНИЦА 3: Контакты (Без изменений) -->
+    <!-- СТРАНИЦА 3: Контакты -->
     <div id="contacts" class="page">
-        <h2>Связь с нами</h2>
-        <div class="contact-block"><strong>📞 Телефон:</strong><br><br><a href="tel:+79991234567" class="contact-link">+7 (999) 123-45-67</a></div>
-        <div class="contact-block"><strong>🕒 Время работы:</strong><br><br>Пн-Вс: 09:00 - 21:00</div>
-        <div class="contact-block"><strong>💬 Telegram-чат прачечной:</strong><br><br><a href="https://t.me/your_laundry_chat" target="_blank" class="contact-link">@your_laundry_chat</a></div>
+        <h2 style="margin-bottom: 24px;">Связь с нами</h2>
+        
+        <div class="contact-block">
+            <div style="font-weight: bold; margin-bottom: 12px; color: gray;">📞 Телефоны:</div>
+            <a href="tel:+79931825294" class="phone-link">+7 (993) 182-52-94</a><br>
+            <a href="tel:+79604025292" class="phone-link">+7 (960) 402-52-92</a>
+        </div>
+        
+        <div class="contact-block">
+            <div style="font-weight: bold; margin-bottom: 12px; color: gray;">🕒 Время работы:</div>
+            <div style="font-size: 16px;">Ежедневно с 09:00 до 19:00</div>
+        </div>
+
+        <div class="contact-block">
+            <div style="font-weight: bold; margin-bottom: 12px; color: gray;">💬 Telegram-чат прачечной:</div>
+            <a href="https://t.me/stirka_y" target="_blank" class="contact-link">@stirka_y</a>
+        </div>
     </div>
 
     <!-- Нижняя панель навигации -->
@@ -282,9 +266,8 @@
             document.getElementById(pageId).classList.add('active');
             tabElement.classList.add('active');
             
-            // Если открыли профиль, обновляем шкалу с анимацией (визуальный эффект)
             if (pageId === 'loyalty') {
-                updateLoyaltyProgress(3); // 3 - это количество стирок для примера
+                updateLoyaltyProgress(3);
             }
         }
 
@@ -313,7 +296,6 @@
             document.getElementById('modal-old-price').innerText = data.old;
         }
 
-        // ЛОГИКА ШКАЛЫ ПРОГРЕССА
         function updateLoyaltyProgress(currentWashes) {
             const tiers = [
                 { washes: 0, discount: 0 },
@@ -331,12 +313,10 @@
             document.getElementById('total-washes').innerText = currentWashes;
 
             for (let i = 0; i < tiers.length; i++) {
-                // Отмечаем пройденные точки
                 if (currentWashes >= tiers[i].washes) {
                     currentDiscount = tiers[i].discount;
                     document.getElementById('ms-' + i).classList.add('reached');
                     
-                    // Вычисляем процент заполнения шкалы между точками (каждый отрезок это 20% ширины)
                     if (i < tiers.length - 1) {
                         const nextTier = tiers[i + 1];
                         const washesInThisSegment = currentWashes - tiers[i].washes;
@@ -344,8 +324,6 @@
                         const segmentProgress = washesInThisSegment / totalWashesForSegment;
                         
                         progressPercent = (i * 20) + (segmentProgress * 20);
-                        
-                        // Текст "Осталось X стирок"
                         nextTierInfo = `До скидки ${nextTier.discount}% осталось стирок: ${nextTier.washes - currentWashes}`;
                     } else {
                         progressPercent = 100;
@@ -356,13 +334,11 @@
             document.getElementById('current-discount').innerText = currentDiscount + '%';
             document.getElementById('next-tier-info').innerText = nextTierInfo;
             
-            // Задержка нужна, чтобы сработала CSS анимация выезда ползунка
             setTimeout(() => {
                 document.getElementById('progress-fill').style.width = progressPercent + '%';
             }, 100);
         }
 
-        // Инициализация Telegram данных
         const user = tg.initDataUnsafe?.user;
         if (user) {
             document.getElementById('user-name').innerText = user.first_name + (user.last_name ? ' ' + user.last_name : '');
