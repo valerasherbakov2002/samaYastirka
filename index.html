@@ -13,7 +13,7 @@
             color: var(--tg-theme-text-color, #000000);
             margin: 0;
             padding: 0;
-            padding-bottom: 70px;
+            padding-bottom: 80px;
         }
         
         .page { display: none; padding: 16px; }
@@ -58,9 +58,48 @@
         .bottom-action-bar { position: fixed; bottom: 0; left: 0; right: 0; background: var(--tg-theme-bg-color, #f4f4f5); padding: 16px; z-index: 10; }
         .order-btn { width: 100%; padding: 16px; background-color: var(--tg-theme-button-color, #3390ec); color: #ffffff; border: none; border-radius: 12px; font-size: 16px; font-weight: bold; cursor: pointer; }
 
+        /* БЛОК АКТИВНОГО ЗАКАЗА КЛИЕНТА */
+        .active-order-card {
+            background: linear-gradient(135deg, #3390ec 0%, #1d6fa5 100%);
+            color: #ffffff;
+            border-radius: 16px;
+            padding: 16px;
+            margin-bottom: 16px;
+            box-shadow: 0 4px 12px rgba(51, 144, 236, 0.25);
+            text-align: left;
+        }
+        .active-order-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        .active-order-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            opacity: 0.9;
+            font-weight: 600;
+        }
+        .status-badge {
+            background: rgba(255, 255, 255, 0.25);
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .active-order-basket {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 4px 0;
+        }
+        .active-order-sum {
+            font-size: 13px;
+            opacity: 0.9;
+        }
+
         /* ПРОФИЛЬ И ЛОЯЛЬНОСТЬ */
-        .profile-header { text-align: center; padding: 20px 0; }
-        /* Еще больше увеличенный аватар */
+        .profile-header { text-align: center; padding: 10px 0 20px 0; }
         .profile-avatar { 
             width: 150px; 
             height: 150px; 
@@ -89,34 +128,71 @@
         #qrcode { display: flex; justify-content: center; margin: 20px 0; }
         
         /* КОНТАКТЫ */
-        #contacts { text-align: center; } /* Центрирование всей страницы контактов */
-        .contact-block { 
-            background-color: var(--tg-theme-secondary-bg-color, #ffffff); 
-            border-radius: 12px; 
-            padding: 16px; 
-            margin-bottom: 12px; 
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        #contacts { text-align: center; }
+        .contact-block { background-color: var(--tg-theme-secondary-bg-color, #ffffff); border-radius: 12px; padding: 16px; margin-bottom: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .phone-link { color: var(--tg-theme-text-color, #000000); text-decoration: none; font-size: 16px; font-weight: 500; display: inline-block; margin-bottom: 8px; user-select: text; -webkit-user-select: text; }
+        .contact-link { color: var(--tg-theme-button-color, #3390ec); text-decoration: none; font-weight: bold; font-size: 16px; }
+
+        /* АДМИН-ПАНЕЛЬ */
+        .admin-card {
+            background-color: var(--tg-theme-secondary-bg-color, #ffffff);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 16px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
         }
-        
-        /* Стили для номеров телефонов (без синего цвета, кликабельные, копируемые) */
-        .phone-link {
-            color: var(--tg-theme-text-color, #000000); 
-            text-decoration: none; 
+        .form-group { margin-bottom: 12px; }
+        .form-label { display: block; font-size: 13px; color: #666; margin-bottom: 6px; font-weight: 500; }
+        .form-input, .form-select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 15px;
+            box-sizing: border-box;
+            background-color: var(--tg-theme-bg-color, #fff);
+            color: var(--tg-theme-text-color, #000);
+        }
+        .admin-submit-btn {
+            width: 100%;
+            padding: 14px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
             font-size: 16px;
-            font-weight: 500;
-            display: inline-block;
-            margin-bottom: 8px;
-            user-select: text; /* Разрешает выделение и копирование */
-            -webkit-user-select: text;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 8px;
         }
+        .admin-submit-btn:disabled { background-color: #999; }
         
-        /* Стиль для ссылки Telegram */
-        .contact-link { 
-            color: var(--tg-theme-button-color, #3390ec); 
-            text-decoration: none; 
-            font-weight: bold; 
-            font-size: 16px;
+        .admin-order-item {
+            border: 1px solid #e5e5ea;
+            border-radius: 12px;
+            padding: 14px;
+            margin-bottom: 12px;
+            background-color: var(--tg-theme-secondary-bg-color, #ffffff);
         }
+        .admin-order-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+        .admin-basket-title { font-size: 18px; font-weight: bold; color: var(--tg-theme-button-color, #3390ec); }
+        .admin-order-status { font-size: 12px; padding: 4px 8px; border-radius: 8px; background: #eee; font-weight: 600; }
+        .admin-order-details { font-size: 14px; color: #555; margin-bottom: 12px; line-height: 1.4; }
+        .admin-status-btns { display: flex; gap: 6px; flex-wrap: wrap; }
+        .status-btn {
+            flex: 1;
+            padding: 10px 8px;
+            border: none;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            color: #fff;
+            min-width: 90px;
+        }
+        .btn-drying { background-color: #f59e0b; }
+        .btn-ready { background-color: #3390ec; }
+        .btn-done { background-color: #10b981; }
 
         /* Навигация */
         .tab-bar { position: fixed; bottom: 0; left: 0; right: 0; background-color: var(--tg-theme-secondary-bg-color, #ffffff); display: flex; justify-content: space-around; padding: 10px 0; border-top: 1px solid #e5e5ea; z-index: 50; }
@@ -129,6 +205,9 @@
 
     <!-- СТРАНИЦА 1: Каталог -->
     <div id="catalog" class="page active">
+        <!-- Динамический блок активного заказа на главной -->
+        <div id="active-orders-main"></div>
+
         <div class="categories-scroll">
             <div class="category-chip">Категории ˅</div>
             <div class="category-chip inactive">Зимняя одежда</div>
@@ -181,7 +260,7 @@
             </div>
         </div>
         <div class="bottom-action-bar">
-            <button class="order-btn" onclick="tg.showAlert('Переход к оформлению заказа')">Оформить заказ</button>
+            <button class="order-btn" onclick="tg.openTelegramLink('https://t.me/stirka_y')">Написать в прачечную</button>
         </div>
     </div>
 
@@ -189,8 +268,11 @@
     <div id="loyalty" class="page">
         <div class="profile-header">
             <img id="user-avatar" class="profile-avatar" src="https://via.placeholder.com/150" alt="Аватар">
-            <h2 id="user-name">Загрузка...</h2>
+            <h2 id="user-name" style="margin: 0;">Загрузка...</h2>
         </div>
+
+        <!-- Динамический блок активного заказа в профиле -->
+        <div id="active-orders-profile"></div>
         
         <div class="loyalty-card">
             <div class="progress-header">
@@ -200,7 +282,7 @@
                 </div>
                 <div>
                     <div class="progress-title">Количество стирок</div>
-                    <div id="total-washes" class="progress-discount" style="color: var(--tg-theme-text-color, #000); text-align: right;">3</div>
+                    <div id="total-washes" class="progress-discount" style="color: var(--tg-theme-text-color, #000); text-align: right;">0</div>
                 </div>
             </div>
 
@@ -214,7 +296,7 @@
                 <div class="milestone" style="left: 100%;" id="ms-5"><div class="milestone-dot"></div><div class="milestone-text">100 <span style="color:#3390ec">20%</span></div></div>
             </div>
             
-            <div id="next-tier-info" class="progress-subtitle" style="text-align: center; margin-bottom: 20px;"></div>
+            <div id="next-tier-info" class="progress-subtitle" style="text-align: center; margin-bottom: 20px;">Загрузка данных...</div>
 
             <p style="font-size: 14px; color: gray;">Покажите этот QR-код администратору</p>
             <div id="qrcode"></div>
@@ -243,16 +325,85 @@
         </div>
     </div>
 
+    <!-- СТРАНИЦА 4: Скрытая Админ-панель -->
+    <div id="admin" class="page">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+            <h2 style="margin: 0;">Админ-панель</h2>
+            <button onclick="fetchAppData()" style="padding: 8px 12px; border-radius: 8px; border: 1px solid #ccc; background: #fff; cursor: pointer;">🔄 Обновить</button>
+        </div>
+
+        <!-- Форма: Принять вещи -->
+        <div class="admin-card">
+            <h3 style="margin-top: 0; margin-bottom: 14px;">➕ Принять вещи</h3>
+            
+            <div class="form-group">
+                <label class="form-label">Выбрать клиента из базы бота (необязательно):</label>
+                <select id="admin-user-select" class="form-select" onchange="onSelectExistingUser()">
+                    <option value="">-- Новый клиент / Ввести вручную --</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Имя клиента *</label>
+                <input type="text" id="admin-client-name" class="form-input" placeholder="Например: Иван">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Номер телефона *</label>
+                <input type="tel" id="admin-client-phone" class="form-input" placeholder="+7 (999) 000-00-00">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Telegram ID клиента (для пуш-уведомлений)</label>
+                <input type="text" id="admin-client-tgid" class="form-input" placeholder="Подтянется из списка или с QR-кода">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Выберите свободную корзину *</label>
+                <select id="admin-basket-select" class="form-select">
+                    <option value="">Загрузка корзин...</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Сумма заказа (стирка + сушка), ₽ *</label>
+                <input type="number" id="admin-order-amount" class="form-input" placeholder="Например: 600">
+            </div>
+
+            <button id="admin-create-btn" class="admin-submit-btn" onclick="createNewOrder()">Принять в стирку</button>
+        </div>
+
+        <!-- Список активных заказов -->
+        <div class="admin-card">
+            <h3 style="margin-top: 0; margin-bottom: 14px;">🧺 Активные заказы</h3>
+            <div id="admin-active-orders-list">Загрузка...</div>
+        </div>
+    </div>
+
     <!-- Нижняя панель навигации -->
     <div class="tab-bar">
         <div class="tab active" onclick="switchTab('catalog', this)"><span class="tab-icon">🏠</span>Главная</div>
         <div class="tab" onclick="switchTab('loyalty', this)"><span class="tab-icon">👤</span>Профиль</div>
         <div class="tab" onclick="switchTab('contacts', this)"><span class="tab-icon">💬</span>Контакты</div>
+        <div id="admin-tab-btn" class="tab" style="display: none;" onclick="switchTab('admin', this)"><span class="tab-icon">⚙️</span>Админ</div>
     </div>
 
     <script>
         const tg = window.Telegram.WebApp;
         tg.expand();
+
+        // КОНФИГУРАЦИЯ БЭКЕНДА И АДМИНОВ
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwRqDLd_cfxQoHE9urUA3dt6HUgELFy2zDEiyUv6zYMgCJmlkoYrHeCjwvzBIOJ6Tns/exec';
+        const ADMIN_IDS = ['451781649', '792372569', '7582247088'];
+
+        const BASKETS_DEFAULT = [
+            'Марлин', 'Манта', 'Парусник', 'Барракуда', 'Косатка',
+            'Нарвал', 'Белуха', 'Дельфин', 'Меч-рыба', 'Скат',
+            'Кои', 'Мурена', 'Крылатка', 'Кашалот', 'Наутилус'
+        ];
+
+        let currentWashesCount = 0;
+        let cachedUsers = [];
 
         const productsData = {
             winter: { title: "Зимняя одежда", image: "Gemini_Generated_Image_yytp2lyytp2lyytp.jpeg", desc: "Стирка объемной зимней одежды в профессиональной стиральной машине ☃️", prices: { 12: { curr: "300 ₽", old: "500 ₽" }, 15: { curr: "350 ₽", old: "650 ₽" } } },
@@ -260,6 +411,30 @@
         };
         let currentProductId = 'winter';
 
+        // Инициализация пользователя Telegram
+        const user = tg.initDataUnsafe?.user;
+        const currentTgId = user ? String(user.id) : 'guest';
+        const currentTgName = user ? (user.first_name + (user.last_name ? ' ' + user.last_name : '')) : 'Гость';
+
+        if (user) {
+            document.getElementById('user-name').innerText = currentTgName;
+            if (user.photo_url) document.getElementById('user-avatar').src = user.photo_url;
+            document.getElementById('user-id-text').innerText = 'ID: ' + currentTgId;
+            new QRCode(document.getElementById("qrcode"), {
+                text: currentTgId, width: 150, height: 150,
+                colorDark : "#000000", colorLight : "#ffffff", correctLevel : QRCode.CorrectLevel.H
+            });
+
+            // Показываем вкладку Админ, если ID входит в список
+            if (ADMIN_IDS.includes(currentTgId)) {
+                document.getElementById('admin-tab-btn').style.display = 'block';
+            }
+        } else {
+            document.getElementById('user-name').innerText = 'Гость';
+            new QRCode(document.getElementById("qrcode"), { text: "guest", width: 150, height: 150 });
+        }
+
+        // Переключение вкладок
         function switchTab(pageId, tabElement) {
             document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
             document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
@@ -267,10 +442,11 @@
             tabElement.classList.add('active');
             
             if (pageId === 'loyalty') {
-                updateLoyaltyProgress(3);
+                updateLoyaltyProgress(currentWashesCount);
             }
         }
 
+        // Модальное окно товара
         function openProduct(type) {
             currentProductId = type;
             const data = productsData[type];
@@ -296,6 +472,7 @@
             document.getElementById('modal-old-price').innerText = data.old;
         }
 
+        // Шкала прогресса лояльности
         function updateLoyaltyProgress(currentWashes) {
             const tiers = [
                 { washes: 0, discount: 0 },
@@ -311,6 +488,11 @@
             let nextTierInfo = "Максимальная скидка достигнута!";
 
             document.getElementById('total-washes').innerText = currentWashes;
+
+            // Сброс классов точек перед пересчетом
+            for (let i = 0; i < tiers.length; i++) {
+                document.getElementById('ms-' + i).classList.remove('reached');
+            }
 
             for (let i = 0; i < tiers.length; i++) {
                 if (currentWashes >= tiers[i].washes) {
@@ -335,23 +517,217 @@
             document.getElementById('next-tier-info').innerText = nextTierInfo;
             
             setTimeout(() => {
-                document.getElementById('progress-fill').style.width = progressPercent + '%';
+                document.getElementById('progress-fill').style.width = Math.min(100, progressPercent) + '%';
             }, 100);
         }
 
-        const user = tg.initDataUnsafe?.user;
-        if (user) {
-            document.getElementById('user-name').innerText = user.first_name + (user.last_name ? ' ' + user.last_name : '');
-            if (user.photo_url) document.getElementById('user-avatar').src = user.photo_url;
-            document.getElementById('user-id-text').innerText = 'ID: ' + user.id;
-            new QRCode(document.getElementById("qrcode"), {
-                text: user.id.toString(), width: 150, height: 150,
-                colorDark : "#000000", colorLight : "#ffffff", correctLevel : QRCode.CorrectLevel.H
-            });
-        } else {
-            document.getElementById('user-name').innerText = 'Гость';
-            new QRCode(document.getElementById("qrcode"), { text: "guest", width: 150, height: 150 });
+        // ЗАГРУЗКА ДАННЫХ ИЗ GOOGLE ТАБЛИЦЫ
+        async function fetchAppData() {
+            try {
+                const url = `${SCRIPT_URL}?action=getInitData&tgId=${encodeURIComponent(currentTgId)}&tgName=${encodeURIComponent(currentTgName)}`;
+                const response = await fetch(url);
+                const data = await response.json();
+
+                if (data.status === 'ok') {
+                    // 1. Обновляем количество стирок клиента
+                    currentWashesCount = data.completedWashes || 0;
+                    updateLoyaltyProgress(currentWashesCount);
+
+                    // 2. Отрисовываем активные заказы клиента
+                    renderClientActiveOrders(data.clientActiveOrders || []);
+
+                    // 3. Если пользователь админ — обновляем админ-панель
+                    if (ADMIN_IDS.includes(currentTgId)) {
+                        cachedUsers = data.users || [];
+                        renderAdminUsersSelect(cachedUsers);
+                        renderAdminBasketsSelect(data.basketsList || BASKETS_DEFAULT, data.occupiedBaskets || []);
+                        renderAdminActiveOrders(data.allActiveOrders || []);
+                    }
+                }
+            } catch (error) {
+                console.error('Ошибка загрузки данных:', error);
+            }
         }
+
+        // Отрисовка блока «Активный заказ» для клиента
+        function renderClientActiveOrders(orders) {
+            const mainContainer = document.getElementById('active-orders-main');
+            const profileContainer = document.getElementById('active-orders-profile');
+
+            if (!orders || orders.length === 0) {
+                mainContainer.innerHTML = '';
+                profileContainer.innerHTML = '';
+                return;
+            }
+
+            let html = '';
+            orders.forEach(order => {
+                html += `
+                    <div class="active-order-card">
+                        <div class="active-order-header">
+                            <span class="active-order-label">🌊 Активный заказ</span>
+                            <span class="status-badge">${order.status}</span>
+                        </div>
+                        <div class="active-order-basket">Корзина: «${order.basket}»</div>
+                        <div class="active-order-sum">Сумма заказа: ${order.amount} ₽</div>
+                    </div>
+                `;
+            });
+
+            mainContainer.innerHTML = html;
+            profileContainer.innerHTML = html;
+        }
+
+        // АДМИН: Заполнение выпадающего списка клиентов
+        function renderAdminUsersSelect(users) {
+            const select = document.getElementById('admin-user-select');
+            select.innerHTML = '<option value="">-- Новый клиент / Ввести вручную --</option>';
+            users.forEach((u, index) => {
+                const phoneText = u.phone ? ` (${u.phone})` : '';
+                select.innerHTML += `<option value="${index}">${u.name}${phoneText} [ID: ${u.tgId}]</option>`;
+            });
+        }
+
+        function onSelectExistingUser() {
+            const idx = document.getElementById('admin-user-select').value;
+            if (idx === '') {
+                document.getElementById('admin-client-name').value = '';
+                document.getElementById('admin-client-phone').value = '';
+                document.getElementById('admin-client-tgid').value = '';
+                return;
+            }
+            const u = cachedUsers[idx];
+            if (u) {
+                document.getElementById('admin-client-name').value = u.name || '';
+                document.getElementById('admin-client-phone').value = u.phone || '';
+                document.getElementById('admin-client-tgid').value = u.tgId || '';
+            }
+        }
+
+        // АДМИН: Заполнение выпадающего списка корзин (морских обитателей)
+        function renderAdminBasketsSelect(baskets, occupied) {
+            const select = document.getElementById('admin-basket-select');
+            select.innerHTML = '<option value="">-- Выберите корзину --</option>';
+            baskets.forEach(basket => {
+                const isOccupied = occupied.includes(basket);
+                const disabledAttr = isOccupied ? 'disabled' : '';
+                const statusText = isOccupied ? ' (Занята)' : '';
+                select.innerHTML += `<option value="${basket}" ${disabledAttr}>${basket}${statusText}</option>`;
+            });
+        }
+
+        // АДМИН: Отрисовка карточек активных заказов
+        function renderAdminActiveOrders(orders) {
+            const container = document.getElementById('admin-active-orders-list');
+            if (!orders || orders.length === 0) {
+                container.innerHTML = '<p style="color: gray; text-align: center;">Сейчас все корзины свободны</p>';
+                return;
+            }
+
+            let html = '';
+            orders.forEach(order => {
+                html += `
+                    <div class="admin-order-item">
+                        <div class="admin-order-top">
+                            <span class="admin-basket-title">🐬 ${order.basket}</span>
+                            <span class="admin-order-status">${order.status}</span>
+                        </div>
+                        <div class="admin-order-details">
+                            👤 <strong>${order.name}</strong><br>
+                            📞 ${order.phone || 'Не указан'}<br>
+                            💰 Сумма: <strong>${order.amount} ₽</strong>
+                        </div>
+                        <div class="admin-status-btns">
+                            <button class="status-btn btn-drying" onclick="updateOrderStatus('${order.orderId}', 'В сушке')">В сушке</button>
+                            <button class="status-btn btn-ready" onclick="updateOrderStatus('${order.orderId}', 'Готово к выдаче')">Готово к выдаче</button>
+                            <button class="status-btn btn-done" onclick="updateOrderStatus('${order.orderId}', 'Выдан')">Заказ выдан</button>
+                        </div>
+                    </div>
+                `;
+            });
+            container.innerHTML = html;
+        }
+
+        // АДМИН: Создание нового заказа
+        async function createNewOrder() {
+            const name = document.getElementById('admin-client-name').value.trim();
+            const phone = document.getElementById('admin-client-phone').value.trim();
+            const clientTgId = document.getElementById('admin-client-tgid').value.trim();
+            const basket = document.getElementById('admin-basket-select').value;
+            const amount = document.getElementById('admin-order-amount').value.trim();
+
+            if (!name || !phone || !basket || !amount) {
+                tg.showAlert('Пожалуйста, заполните Имя, Телефон, выберите Корзину и укажите Сумму заказа.');
+                return;
+            }
+
+            const btn = document.getElementById('admin-create-btn');
+            btn.disabled = true;
+            btn.innerText = 'Сохранение...';
+
+            try {
+                const response = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                    body: JSON.stringify({
+                        action: 'createOrder',
+                        name: name,
+                        phone: phone,
+                        clientTgId: clientTgId,
+                        basket: basket,
+                        amount: amount
+                    })
+                });
+                const resData = await response.json();
+
+                if (resData.status === 'ok') {
+                    tg.showAlert(`Заказ принят! Корзина «${basket}» закреплена за клиентом.`);
+                    // Очищаем поля формы
+                    document.getElementById('admin-user-select').value = '';
+                    document.getElementById('admin-client-name').value = '';
+                    document.getElementById('admin-client-phone').value = '';
+                    document.getElementById('admin-client-tgid').value = '';
+                    document.getElementById('admin-order-amount').value = '';
+                    // Перезагружаем данные
+                    await fetchAppData();
+                } else {
+                    tg.showAlert('Ошибка: ' + (resData.message || 'Не удалось создать заказ'));
+                }
+            } catch (err) {
+                tg.showAlert('Ошибка соединения со скриптом');
+            } finally {
+                btn.disabled = false;
+                btn.innerText = 'Принять в стирку';
+            }
+        }
+
+        // АДМИН: Смена статуса заказа
+        async function updateOrderStatus(orderId, newStatus) {
+            try {
+                const response = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                    body: JSON.stringify({
+                        action: 'updateStatus',
+                        orderId: orderId,
+                        newStatus: newStatus
+                    })
+                });
+                const resData = await response.json();
+
+                if (resData.status === 'ok') {
+                    tg.showAlert(`Статус изменен на: «${newStatus}»`);
+                    await fetchAppData();
+                } else {
+                    tg.showAlert('Ошибка при обновлении статуса');
+                }
+            } catch (err) {
+                tg.showAlert('Ошибка соединения со скриптом');
+            }
+        }
+
+        // Запускаем загрузку данных при старте приложения
+        fetchAppData();
     </script>
 </body>
 </html>
