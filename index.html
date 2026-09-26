@@ -13,13 +13,13 @@
             color: var(--tg-theme-text-color, #000000);
             margin: 0;
             padding: 0;
-            padding-bottom: 80px;
+            padding-bottom: 85px;
         }
         
         .page { display: none; padding: 16px; }
         .page.active { display: block; }
 
-        /* Категории */
+        /* Категории каталога */
         .categories-scroll { display: flex; overflow-x: auto; gap: 8px; padding-bottom: 16px; scrollbar-width: none; }
         .categories-scroll::-webkit-scrollbar { display: none; }
         .category-chip { background-color: var(--tg-theme-button-color, #3390ec); color: #ffffff; padding: 8px 16px; border-radius: 20px; font-size: 14px; white-space: nowrap; }
@@ -109,13 +109,13 @@
         .phone-link { color: var(--tg-theme-text-color, #000000); text-decoration: none; font-size: 16px; font-weight: 500; display: inline-block; margin-bottom: 8px; user-select: text; -webkit-user-select: text; }
         .contact-link { color: var(--tg-theme-button-color, #3390ec); text-decoration: none; font-weight: bold; font-size: 16px; }
 
-        /* АДМИН-ПАНЕЛЬ */
+        /* ПРОДВИНУТАЯ АДМИН-ПАНЕЛЬ */
         .admin-card {
             background-color: var(--tg-theme-secondary-bg-color, #ffffff);
-            border-radius: 12px;
+            border-radius: 14px;
             padding: 16px;
             margin-bottom: 16px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+            box-shadow: 0 1px 4px rgba(0,0,0,0.08);
         }
         .qr-scan-btn {
             width: 100%;
@@ -127,38 +127,124 @@
             font-size: 15px;
             font-weight: bold;
             cursor: pointer;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
         }
-        .form-group { margin-bottom: 12px; }
-        .form-label { display: block; font-size: 13px; color: #666; margin-bottom: 6px; font-weight: 500; }
+        .form-group { margin-bottom: 14px; position: relative; }
+        .form-label { display: block; font-size: 13px; color: #666; margin-bottom: 6px; font-weight: 600; }
         .form-input, .form-select {
             width: 100%;
             padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
+            border: 1px solid #d1d5db;
+            border-radius: 10px;
             font-size: 15px;
             box-sizing: border-box;
             background-color: var(--tg-theme-bg-color, #fff);
             color: var(--tg-theme-text-color, #000);
         }
+        
+        /* Выпадающий список автопоиска */
+        .search-results-dropdown {
+            background: var(--tg-theme-secondary-bg-color, #fff);
+            border: 1px solid #3390ec;
+            border-radius: 10px;
+            max-height: 180px;
+            overflow-y: auto;
+            margin-top: 4px;
+            display: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+        }
+        .search-result-item {
+            padding: 10px 12px;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .search-result-item:last-child { border-bottom: none; }
+        .search-result-item:active { background-color: #e5f1fb; }
+
+        /* Плашка подсказки лояльности клиента */
+        .loyalty-hint-banner {
+            display: none;
+            background-color: #ecfdf5;
+            border: 1px solid #10b981;
+            color: #065f46;
+            padding: 10px 12px;
+            border-radius: 10px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 14px;
+            line-height: 1.4;
+        }
+
+        /* Быстрые чипсы (Категории, Цены, Оплата) */
+        .chips-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .quick-chip {
+            padding: 9px 12px;
+            border-radius: 10px;
+            border: 1px solid #d1d5db;
+            background-color: var(--tg-theme-bg-color, #f9fafb);
+            color: var(--tg-theme-text-color, #111);
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            user-select: none;
+        }
+        .quick-chip.active {
+            background-color: var(--tg-theme-button-color, #3390ec);
+            color: #ffffff;
+            border-color: var(--tg-theme-button-color, #3390ec);
+        }
+        .price-chip {
+            background-color: #eff6ff;
+            border-color: #93c5fd;
+            color: #1d4ed8;
+        }
+        .price-chip:active {
+            transform: scale(0.97);
+        }
+        .price-chip-reset {
+            background-color: #fef2f2;
+            border-color: #fca5a5;
+            color: #dc2626;
+        }
+
+        /* Итоговый блок к оплате */
+        .final-sum-box {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 12px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 14px;
+        }
+        .final-sum-label { font-size: 14px; font-weight: 600; color: #475569; }
+        .final-sum-value { font-size: 22px; font-weight: 800; color: #16a34a; }
+
         .admin-submit-btn {
             width: 100%;
-            padding: 14px;
-            background-color: #28a745;
+            padding: 15px;
+            background-color: #16a34a;
             color: #fff;
             border: none;
-            border-radius: 10px;
+            border-radius: 12px;
             font-size: 16px;
             font-weight: bold;
             cursor: pointer;
-            margin-top: 8px;
+            margin-top: 4px;
         }
-        .admin-submit-btn:disabled { background-color: #999; }
+        .admin-submit-btn:disabled { background-color: #9ca3af; }
         
+        /* Карточки активных заказов и индикатор Забытых вещей */
         .admin-order-item {
             border: 1px solid #e5e5ea;
             border-radius: 12px;
@@ -166,10 +252,24 @@
             margin-bottom: 12px;
             background-color: var(--tg-theme-secondary-bg-color, #ffffff);
         }
+        .admin-order-item.forgotten {
+            border: 2px solid #ef4444;
+            background-color: #fef2f2;
+        }
+        .forgotten-badge {
+            display: inline-block;
+            background-color: #ef4444;
+            color: #ffffff;
+            font-size: 11px;
+            font-weight: bold;
+            padding: 3px 8px;
+            border-radius: 6px;
+            margin-bottom: 8px;
+        }
         .admin-order-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
         .admin-basket-title { font-size: 18px; font-weight: bold; color: var(--tg-theme-button-color, #3390ec); }
-        .admin-order-status { font-size: 12px; padding: 4px 8px; border-radius: 8px; background: #eee; font-weight: 600; }
-        .admin-order-details { font-size: 14px; color: #555; margin-bottom: 12px; line-height: 1.4; }
+        .admin-order-status { font-size: 12px; padding: 4px 8px; border-radius: 8px; background: #eee; font-weight: 600; color: #333; }
+        .admin-order-details { font-size: 13px; color: #444; margin-bottom: 12px; line-height: 1.5; }
         .admin-status-btns { display: flex; gap: 6px; flex-wrap: wrap; }
         .status-btn {
             flex: 1;
@@ -180,11 +280,23 @@
             font-weight: bold;
             cursor: pointer;
             color: #fff;
-            min-width: 90px;
+            min-width: 85px;
         }
         .btn-drying { background-color: #f59e0b; }
         .btn-ready { background-color: #3390ec; }
         .btn-done { background-color: #10b981; }
+        .btn-remind {
+            width: 100%;
+            margin-top: 8px;
+            padding: 10px;
+            background-color: #ef4444;
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: bold;
+            cursor: pointer;
+        }
 
         /* Навигация */
         .tab-bar { position: fixed; bottom: 0; left: 0; right: 0; background-color: var(--tg-theme-secondary-bg-color, #ffffff); display: flex; justify-content: space-around; padding: 10px 0; border-top: 1px solid #e5e5ea; z-index: 50; }
@@ -315,44 +427,63 @@
         </div>
     </div>
 
-    <!-- СТРАНИЦА 4: Скрытая Админ-панель -->
+    <!-- СТРАНИЦА 4: Продвинутая Админ-панель -->
     <div id="admin" class="page">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
             <h2 style="margin: 0;">Админ-панель</h2>
-            <button onclick="fetchAppData()" style="padding: 8px 12px; border-radius: 8px; border: 1px solid #ccc; background: #fff; cursor: pointer;">🔄 Обновить</button>
+            <button onclick="fetchAppData()" style="padding: 8px 12px; border-radius: 8px; border: 1px solid #ccc; background: #fff; cursor: pointer; font-weight: 600;">🔄 Обновить</button>
         </div>
 
-        <!-- Форма: Принять вещи -->
+        <!-- Блок 1: Принять вещи -->
         <div class="admin-card">
-            <h3 style="margin-top: 0; margin-bottom: 14px;">➕ Принять вещи</h3>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                <h3 style="margin: 0;">➕ Принять вещи</h3>
+                <button type="button" onclick="resetAdminForm()" style="background: none; border: none; color: #3390ec; font-size: 13px; cursor: pointer; font-weight: 600;">Очистить форму</button>
+            </div>
             
-            <!-- Кнопка сканирования QR-кода -->
+            <!-- Сканер QR -->
             <button type="button" class="qr-scan-btn" onclick="scanClientQR()">
                 📷 Сканировать QR-код клиента
             </button>
 
+            <!-- Умный автопоиск -->
             <div class="form-group">
-                <label class="form-label">Или выбрать клиента из базы бота:</label>
-                <select id="admin-user-select" class="form-select" onchange="onSelectExistingUser()">
-                    <option value="">-- Новый клиент / Ввести вручную --</option>
-                </select>
+                <label class="form-label">🔍 Быстрый поиск (последние 4 цифры телефона, имя или ID):</label>
+                <input type="text" id="admin-smart-search" class="form-input" placeholder="Например: 5294 или Иван" oninput="onSmartSearchInput()">
+                <div id="search-results-box" class="search-results-dropdown"></div>
             </div>
+
+            <!-- Плашка лояльности найденного клиента -->
+            <div id="loyalty-hint-banner" class="loyalty-hint-banner"></div>
 
             <div class="form-group">
                 <label class="form-label">Имя клиента *</label>
-                <input type="text" id="admin-client-name" class="form-input" placeholder="Например: Иван">
+                <input type="text" id="admin-client-name" class="form-input" placeholder="Введите имя">
             </div>
 
             <div class="form-group">
                 <label class="form-label">Номер телефона *</label>
-                <input type="tel" id="admin-client-phone" class="form-input" placeholder="+7 (999) 000-00-00">
+                <input type="tel" id="admin-client-phone" class="form-input" placeholder="+7 (999) 000-00-00" oninput="onPhoneManualInput()">
             </div>
 
             <div class="form-group">
-                <label class="form-label">Telegram ID клиента (заполняется автоматически)</label>
-                <input type="text" id="admin-client-tgid" class="form-input" placeholder="Отсканируйте QR или выберите из списка">
+                <label class="form-label">Telegram ID (подтягивается сам из QR или поиска)</label>
+                <input type="text" id="admin-client-tgid" class="form-input" placeholder="Необязательно, если клиент без бота">
             </div>
 
+            <!-- Динамическое поле "Источник" (Только для новых клиентов) -->
+            <div class="form-group" id="source-form-group">
+                <label class="form-label" style="color: #d97706;">🌟 Новый клиент! Откуда о нас узнали? *</label>
+                <select id="admin-client-source" class="form-select">
+                    <option value="">-- Выберите источник --</option>
+                    <option value="Яндекс Карты">📍 Яндекс Карты</option>
+                    <option value="Вывеска с улицы">🪧 Вывеска с улицы</option>
+                    <option value="Рекомендация">🤝 Рекомендация</option>
+                    <option value="Соцсети">📱 Соцсети</option>
+                </select>
+            </div>
+
+            <!-- Свободная корзина -->
             <div class="form-group">
                 <label class="form-label">Выберите свободную корзину *</label>
                 <select id="admin-basket-select" class="form-select">
@@ -360,17 +491,60 @@
                 </select>
             </div>
 
+            <!-- Категория вещей -->
             <div class="form-group">
-                <label class="form-label">Сумма заказа (стирка + сушка), ₽ *</label>
-                <input type="number" id="admin-order-amount" class="form-input" placeholder="Например: 600">
+                <label class="form-label">Категория вещей *</label>
+                <div class="chips-wrap" id="category-chips">
+                    <div class="quick-chip active" onclick="selectCategoryChip(this, 'Повседневное')">👕 Повседневное</div>
+                    <div class="quick-chip" onclick="selectCategoryChip(this, 'Пуховик')">🧥 Пуховик</div>
+                    <div class="quick-chip" onclick="selectCategoryChip(this, 'Плед и одеяло')">🛏️ Плед и одеяло</div>
+                    <div class="quick-chip" onclick="selectCategoryChip(this, 'Коммерческое')">🏢 Коммерческое</div>
+                </div>
+            </div>
+
+            <!-- Кнопки быстрого набора цены (Quick Chips) -->
+            <div class="form-group">
+                <label class="form-label">Быстрый набор суммы по прайсу (нажимайте для сложения):</label>
+                <div class="chips-wrap" style="margin-bottom: 8px;">
+                    <div class="quick-chip price-chip" onclick="addPricePreset(500)">+500 ₽ Стирка (12кг) + Сушка</div>
+                    <div class="quick-chip price-chip" onclick="addPricePreset(550)">+550 ₽ Стирка (15кг) + Сушка</div>
+                    <div class="quick-chip price-chip" onclick="addPricePreset(300)">+300 ₽ Сушка</div>
+                    <div class="quick-chip price-chip" onclick="addPricePreset(300)">+300 ₽ Стирка (12кг)</div>
+                    <div class="quick-chip price-chip" onclick="addPricePreset(350)">+350 ₽ Стирка (15кг)</div>
+                    <div class="quick-chip price-chip-reset" onclick="resetPricePreset()">✕ Сброс (0 ₽)</div>
+                </div>
+                <input type="number" id="admin-price-sum" class="form-input" placeholder="Сумма по прайсу, ₽" value="0" oninput="recalculateFinalSum()">
+            </div>
+
+            <!-- Скидка / Промокод -->
+            <div class="form-group">
+                <label class="form-label">Скидка лояльности (в % или в рублях, например: 5% или 100):</label>
+                <input type="text" id="admin-discount-input" class="form-input" placeholder="0%" value="0%" oninput="recalculateFinalSum()">
+            </div>
+
+            <!-- Автоматический расчет ИТОГО -->
+            <div class="final-sum-box">
+                <span class="final-sum-label">Итого к оплате:</span>
+                <span class="final-sum-value"><span id="admin-final-sum-display">0</span> ₽</span>
+            </div>
+
+            <!-- Способ оплаты -->
+            <div class="form-group">
+                <label class="form-label">Способ оплаты *</label>
+                <div class="chips-wrap" id="payment-chips">
+                    <div class="quick-chip active" onclick="selectPaymentChip(this, 'Перевод СБП')">📲 Перевод СБП</div>
+                    <div class="quick-chip" onclick="selectPaymentChip(this, 'Наличные')">💵 Наличные</div>
+                    <div class="quick-chip" onclick="selectPaymentChip(this, 'Терминал')">💳 Терминал</div>
+                    <div class="quick-chip" onclick="selectPaymentChip(this, 'Бонусы')">🎁 Бонусы</div>
+                </div>
             </div>
 
             <button id="admin-create-btn" class="admin-submit-btn" onclick="createNewOrder()">Принять в стирку</button>
         </div>
 
-        <!-- Список активных заказов -->
+        <!-- Блок 2: Активные заказы и контроль стеллажей -->
         <div class="admin-card">
-            <h3 style="margin-top: 0; margin-bottom: 14px;">🧺 Активные заказы</h3>
+            <h3 style="margin-top: 0; margin-bottom: 14px;">🧺 Активные заказы на стеллажах</h3>
             <div id="admin-active-orders-list">Загрузка...</div>
         </div>
     </div>
@@ -387,7 +561,6 @@
         const tg = window.Telegram.WebApp;
         tg.expand();
 
-        // КОНФИГУРАЦИЯ БЭКЕНДА И АДМИНОВ
         const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwRqDLd_cfxQoHE9urUA3dt6HUgELFy2zDEiyUv6zYMgCJmlkoYrHeCjwvzBIOJ6Tns/exec';
         const ADMIN_IDS = ['451781649', '792372569', '7582247088'];
 
@@ -397,8 +570,21 @@
             'Кои', 'Мурена', 'Крылатка', 'Кашалот', 'Наутилус'
         ];
 
+        const LOYALTY_TIERS = [
+            { washes: 0, discount: 0 },
+            { washes: 5, discount: 1 },
+            { washes: 10, discount: 3 },
+            { washes: 20, discount: 5 },
+            { washes: 50, discount: 10 },
+            { washes: 100, discount: 20 }
+        ];
+
         let currentWashesCount = 0;
         let cachedUsers = [];
+        let selectedCategory = 'Повседневное';
+        let selectedPayment = 'Перевод СБП';
+        let isKnownClient = false;
+        let knownClientSource = '';
 
         const productsData = {
             winter: { title: "Зимняя одежда", image: "Gemini_Generated_Image_yytp2lyytp2lyytp.jpeg", desc: "Стирка объемной зимней одежды в профессиональной стиральной машине ☃️", prices: { 12: { curr: "300 ₽", old: "500 ₽" }, 15: { curr: "350 ₽", old: "650 ₽" } } },
@@ -428,7 +614,6 @@
             new QRCode(document.getElementById("qrcode"), { text: "guest", width: 150, height: 150 });
         }
 
-        // Переключение вкладок
         function switchTab(pageId, tabElement) {
             document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
             document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
@@ -440,7 +625,6 @@
             }
         }
 
-        // Модальное окно товара
         function openProduct(type) {
             currentProductId = type;
             const data = productsData[type];
@@ -466,36 +650,37 @@
             document.getElementById('modal-old-price').innerText = data.old;
         }
 
-        // Шкала прогресса лояльности
-        function updateLoyaltyProgress(currentWashes) {
-            const tiers = [
-                { washes: 0, discount: 0 },
-                { washes: 5, discount: 1 },
-                { washes: 10, discount: 3 },
-                { washes: 20, discount: 5 },
-                { washes: 50, discount: 10 },
-                { washes: 100, discount: 20 }
-            ];
+        // Вычисление процента скидки по числу стирок
+        function getDiscountPercentByWashes(washes) {
+            let disc = 0;
+            for (let i = 0; i < LOYALTY_TIERS.length; i++) {
+                if (washes >= LOYALTY_TIERS[i].washes) {
+                    disc = LOYALTY_TIERS[i].discount;
+                }
+            }
+            return disc;
+        }
 
+        function updateLoyaltyProgress(currentWashes) {
             let currentDiscount = 0;
             let progressPercent = 0;
             let nextTierInfo = "Максимальная скидка достигнута!";
 
             document.getElementById('total-washes').innerText = currentWashes;
 
-            for (let i = 0; i < tiers.length; i++) {
+            for (let i = 0; i < LOYALTY_TIERS.length; i++) {
                 document.getElementById('ms-' + i).classList.remove('reached');
             }
 
-            for (let i = 0; i < tiers.length; i++) {
-                if (currentWashes >= tiers[i].washes) {
-                    currentDiscount = tiers[i].discount;
+            for (let i = 0; i < LOYALTY_TIERS.length; i++) {
+                if (currentWashes >= LOYALTY_TIERS[i].washes) {
+                    currentDiscount = LOYALTY_TIERS[i].discount;
                     document.getElementById('ms-' + i).classList.add('reached');
                     
-                    if (i < tiers.length - 1) {
-                        const nextTier = tiers[i + 1];
-                        const washesInThisSegment = currentWashes - tiers[i].washes;
-                        const totalWashesForSegment = nextTier.washes - tiers[i].washes;
+                    if (i < LOYALTY_TIERS.length - 1) {
+                        const nextTier = LOYALTY_TIERS[i + 1];
+                        const washesInThisSegment = currentWashes - LOYALTY_TIERS[i].washes;
+                        const totalWashesForSegment = nextTier.washes - LOYALTY_TIERS[i].washes;
                         const segmentProgress = washesInThisSegment / totalWashesForSegment;
                         
                         progressPercent = (i * 20) + (segmentProgress * 20);
@@ -514,39 +699,7 @@
             }, 100);
         }
 
-        // СКАНЕР QR-КОДА КЛИЕНТА В АДМИНКЕ
-        function scanClientQR() {
-            if (!tg.showScanQrPopup) {
-                tg.showAlert('Сканер QR-кодов не поддерживается на вашей версии Telegram.');
-                return;
-            }
-
-            tg.showScanQrPopup({ text: 'Наведите камеру на QR-код в профиле клиента' }, function(qrText) {
-                if (qrText) {
-                    const scannedId = String(qrText).trim();
-                    tg.closeScanQrPopup();
-
-                    // Подставляем отсканированный ID в поле
-                    document.getElementById('admin-client-tgid').value = scannedId;
-
-                    // Ищем клиента в базе, чтобы автоматически подтянуть Имя и Телефон
-                    const foundIndex = cachedUsers.findIndex(u => String(u.tgId) === scannedId);
-                    if (foundIndex !== -1) {
-                        const foundUser = cachedUsers[foundIndex];
-                        document.getElementById('admin-user-select').value = foundIndex;
-                        document.getElementById('admin-client-name').value = foundUser.name || '';
-                        document.getElementById('admin-client-phone').value = foundUser.phone || '';
-                        tg.showAlert(`Клиент найден: ${foundUser.name}`);
-                    } else {
-                        document.getElementById('admin-user-select').value = '';
-                        tg.showAlert(`QR-код считан (ID: ${scannedId}). Введите имя и телефон клиента.`);
-                    }
-                    return true;
-                }
-            });
-        }
-
-        // ЗАГРУЗКА ДАННЫХ ИЗ GOOGLE ТАБЛИЦЫ
+        // ЗАГРУЗКА ДАННЫХ ИЗ ТАБЛИЦЫ
         async function fetchAppData() {
             try {
                 const url = `${SCRIPT_URL}?action=getInitData&tgId=${encodeURIComponent(currentTgId)}&tgName=${encodeURIComponent(currentTgName)}`;
@@ -560,7 +713,6 @@
 
                     if (ADMIN_IDS.includes(currentTgId)) {
                         cachedUsers = data.users || [];
-                        renderAdminUsersSelect(cachedUsers);
                         renderAdminBasketsSelect(data.basketsList || BASKETS_DEFAULT, data.occupiedBaskets || []);
                         renderAdminActiveOrders(data.allActiveOrders || []);
                     }
@@ -570,7 +722,7 @@
             }
         }
 
-        // Отрисовка блока «Активный заказ» для клиента
+        // Отрисовка блока «Активный заказ» у клиента
         function renderClientActiveOrders(orders) {
             const mainContainer = document.getElementById('active-orders-main');
             const profileContainer = document.getElementById('active-orders-profile');
@@ -590,7 +742,7 @@
                             <span class="status-badge">${order.status}</span>
                         </div>
                         <div class="active-order-basket">Корзина: «${order.basket}»</div>
-                        <div class="active-order-sum">Сумма заказа: ${order.amount} ₽</div>
+                        <div class="active-order-sum">К оплате: ${order.finalSum} ₽</div>
                     </div>
                 `;
             });
@@ -599,36 +751,183 @@
             profileContainer.innerHTML = html;
         }
 
-        // АДМИН: Заполнение выпадающего списка клиентов
-        function renderAdminUsersSelect(users) {
-            const select = document.getElementById('admin-user-select');
-            select.innerHTML = '<option value="">-- Новый клиент / Ввести вручную --</option>';
-            users.forEach((u, index) => {
-                const phoneText = u.phone ? ` (${u.phone})` : '';
-                select.innerHTML += `<option value="${index}">${u.name}${phoneText} [ID: ${u.tgId}]</option>`;
+        // ==========================================
+        // ЛОГИКА АДМИН-ПАНЕЛИ: УМНЫЙ ПОИСК И QR
+        // ==========================================
+        function onSmartSearchInput() {
+            const query = document.getElementById('admin-smart-search').value.trim().toLowerCase();
+            const box = document.getElementById('search-results-box');
+
+            if (!query) {
+                box.style.display = 'none';
+                box.innerHTML = '';
+                return;
+            }
+
+            const matches = cachedUsers.filter(u => {
+                const nameMatch = (u.name || '').toLowerCase().includes(query);
+                const phoneMatch = (u.phoneNorm || '').includes(query) || (u.phone || '').includes(query);
+                const idMatch = (u.tgId || '').includes(query);
+                return nameMatch || phoneMatch || idMatch;
+            });
+
+            if (matches.length === 0) {
+                box.style.display = 'block';
+                box.innerHTML = `<div class="search-result-item" style="color: gray;">Клиент не найден — заполните поля ниже как для нового</div>`;
+                return;
+            }
+
+            let html = '';
+            matches.forEach((u) => {
+                const disc = getDiscountPercentByWashes(u.washes || 0);
+                const phoneStr = u.phone ? `📞 ${u.phone}` : 'Без телефона';
+                html += `
+                    <div class="search-result-item" onclick='applySelectedClient(${JSON.stringify(u).replace(/'/g, "&#39;")})'>
+                        <strong>${u.name || 'Без имени'}</strong> (${phoneStr})<br>
+                        <span style="font-size: 12px; color: #16a34a;">Стирок: ${u.washes || 0} | Скидка: ${disc}%</span>
+                    </div>
+                `;
+            });
+
+            box.innerHTML = html;
+            box.style.display = 'block';
+        }
+
+        // Применение выбранного клиента из поиска или QR
+        function applySelectedClient(u) {
+            document.getElementById('search-results-box').style.display = 'none';
+            document.getElementById('admin-smart-search').value = '';
+
+            document.getElementById('admin-client-name').value = u.name || '';
+            document.getElementById('admin-client-phone').value = u.phone || '';
+            document.getElementById('admin-client-tgid').value = u.tgId || '';
+
+            const washes = Number(u.washes || 0);
+            const discountPercent = getDiscountPercentByWashes(washes);
+            const visitNum = washes + 1;
+
+            // Показываем подсказку по лояльности
+            const banner = document.getElementById('loyalty-hint-banner');
+            banner.style.display = 'block';
+            banner.innerHTML = `🎉 Постоянный клиент: <strong>${visitNum}-й визит!</strong> (Завершено стирок: ${washes}).<br>Автоматически применена скидка лояльности: <strong>${discountPercent}%</strong>`;
+
+            // Автоматически подставляем процент скидки и пересчитываем сумму
+            document.getElementById('admin-discount-input').value = discountPercent + '%';
+            recalculateFinalSum();
+
+            // Если у клиента уже есть визиты или указан источник — скрываем поле "Откуда о нас узнали?"
+            if (washes > 0 || u.source) {
+                isKnownClient = true;
+                knownClientSource = u.source || 'Постоянный клиент';
+                document.getElementById('source-form-group').style.display = 'none';
+            } else {
+                isKnownClient = false;
+                knownClientSource = '';
+                document.getElementById('source-form-group').style.display = 'block';
+            }
+        }
+
+        // Если админ вводит телефон вручную — проверяем совпадение
+        function onPhoneManualInput() {
+            const raw = document.getElementById('admin-client-phone').value.replace(/\D/g, '');
+            if (raw.length >= 10) {
+                const last10 = raw.slice(-10);
+                const found = cachedUsers.find(u => (u.phoneNorm || '').slice(-10) === last10);
+                if (found) {
+                    applySelectedClient(found);
+                }
+            }
+        }
+
+        // Сканер QR-кода
+        function scanClientQR() {
+            if (!tg.showScanQrPopup) {
+                tg.showAlert('Сканер QR-кодов не поддерживается на вашем устройстве.');
+                return;
+            }
+
+            tg.showScanQrPopup({ text: 'Наведите камеру на QR-код в профиле клиента' }, function(qrText) {
+                if (qrText) {
+                    const scannedId = String(qrText).trim();
+                    tg.closeScanQrPopup();
+
+                    const foundUser = cachedUsers.find(u => String(u.tgId) === scannedId);
+                    if (foundUser) {
+                        applySelectedClient(foundUser);
+                        tg.showAlert(`Клиент найден: ${foundUser.name}`);
+                    } else {
+                        resetAdminForm();
+                        document.getElementById('admin-client-tgid').value = scannedId;
+                        tg.showAlert(`QR считан (ID: ${scannedId}). Это новый клиент — введите имя, телефон и источник.`);
+                    }
+                    return true;
+                }
             });
         }
 
-        function onSelectExistingUser() {
-            const idx = document.getElementById('admin-user-select').value;
-            if (idx === '') {
-                document.getElementById('admin-client-name').value = '';
-                document.getElementById('admin-client-phone').value = '';
-                document.getElementById('admin-client-tgid').value = '';
-                return;
-            }
-            const u = cachedUsers[idx];
-            if (u) {
-                document.getElementById('admin-client-name').value = u.name || '';
-                document.getElementById('admin-client-phone').value = u.phone || '';
-                document.getElementById('admin-client-tgid').value = u.tgId || '';
-            }
+        // Сброс формы админа
+        function resetAdminForm() {
+            document.getElementById('admin-smart-search').value = '';
+            document.getElementById('search-results-box').style.display = 'none';
+            document.getElementById('loyalty-hint-banner').style.display = 'none';
+            document.getElementById('admin-client-name').value = '';
+            document.getElementById('admin-client-phone').value = '';
+            document.getElementById('admin-client-tgid').value = '';
+            document.getElementById('admin-client-source').value = '';
+            document.getElementById('source-form-group').style.display = 'block';
+            document.getElementById('admin-price-sum').value = '0';
+            document.getElementById('admin-discount-input').value = '0%';
+            isKnownClient = false;
+            knownClientSource = '';
+            recalculateFinalSum();
         }
 
-        // АДМИН: Заполнение выпадающего списка корзин
+        // ==========================================
+        // БЫСТРЫЕ КНОПКИ ЦЕН И АВТОРАСЧЕТ СКИДКИ
+        // ==========================================
+        function addPricePreset(amount) {
+            const input = document.getElementById('admin-price-sum');
+            const current = Number(input.value || 0);
+            input.value = current + amount;
+            recalculateFinalSum();
+        }
+
+        function resetPricePreset() {
+            document.getElementById('admin-price-sum').value = 0;
+            recalculateFinalSum();
+        }
+
+        function recalculateFinalSum() {
+            const priceSum = Number(document.getElementById('admin-price-sum').value || 0);
+            const discountRaw = String(document.getElementById('admin-discount-input').value || '0').trim();
+            let finalSum = priceSum;
+
+            if (discountRaw.includes('%')) {
+                const percent = parseFloat(discountRaw.replace('%', '').replace(',', '.')) || 0;
+                finalSum = Math.round(priceSum * (1 - percent / 100));
+            } else {
+                const rubDiscount = parseFloat(discountRaw.replace(',', '.')) || 0;
+                finalSum = Math.max(0, Math.round(priceSum - rubDiscount));
+            }
+
+            document.getElementById('admin-final-sum-display').innerText = Math.max(0, finalSum);
+        }
+
+        function selectCategoryChip(el, category) {
+            selectedCategory = category;
+            document.querySelectorAll('#category-chips .quick-chip').forEach(c => c.classList.remove('active'));
+            el.classList.add('active');
+        }
+
+        function selectPaymentChip(el, payment) {
+            selectedPayment = payment;
+            document.querySelectorAll('#payment-chips .quick-chip').forEach(c => c.classList.remove('active'));
+            el.classList.add('active');
+        }
+
         function renderAdminBasketsSelect(baskets, occupied) {
             const select = document.getElementById('admin-basket-select');
-            select.innerHTML = '<option value="">-- Выберите корзину --</option>';
+            select.innerHTML = '<option value="">-- Выберите свободную корзину --</option>';
             baskets.forEach(basket => {
                 const isOccupied = occupied.includes(basket);
                 const disabledAttr = isOccupied ? 'disabled' : '';
@@ -637,48 +936,68 @@
             });
         }
 
-        // АДМИН: Отрисовка карточек активных заказов
+        // Отрисовка активных заказов и индикатора "Забытые вещи" (>24 ч)
         function renderAdminActiveOrders(orders) {
             const container = document.getElementById('admin-active-orders-list');
             if (!orders || orders.length === 0) {
-                container.innerHTML = '<p style="color: gray; text-align: center;">Сейчас все корзины свободны</p>';
+                container.innerHTML = '<p style="color: gray; text-align: center;">Сейчас все 15 корзин свободны</p>';
                 return;
             }
 
             let html = '';
             orders.forEach(order => {
+                const forgottenClass = order.isForgotten ? 'forgotten' : '';
+                const forgottenHtml = order.isForgotten
+                    ? `<div class="forgotten-badge">⚠️ Забытые вещи! Ждет уже ${order.hoursWaiting} ч. (>24ч)</div>`
+                    : '';
+                const remindBtnHtml = order.isForgotten
+                    ? `<button class="btn-remind" onclick="sendForgottenReminder('${order.orderId}')">🔔 Напомнить клиенту забрать вещи</button>`
+                    : '';
+
                 html += `
-                    <div class="admin-order-item">
+                    <div class="admin-order-item ${forgottenClass}">
+                        ${forgottenHtml}
                         <div class="admin-order-top">
                             <span class="admin-basket-title">🐬 ${order.basket}</span>
                             <span class="admin-order-status">${order.status}</span>
                         </div>
                         <div class="admin-order-details">
-                            👤 <strong>${order.name}</strong><br>
-                            📞 ${order.phone || 'Не указан'}<br>
-                            💰 Сумма: <strong>${order.amount} ₽</strong>
+                            👤 <strong>${order.name}</strong> (${order.phone || 'Без телефона'})<br>
+                            📦 Категория: ${order.category || '—'} | 💳 ${order.paymentMethod || '—'}<br>
+                            💰 По прайсу: ${order.priceSum} ₽ | Скидка: ${order.discount} | <strong>Итого: ${order.finalSum} ₽</strong>
                         </div>
                         <div class="admin-status-btns">
                             <button class="status-btn btn-drying" onclick="updateOrderStatus('${order.orderId}', 'В сушке')">В сушке</button>
                             <button class="status-btn btn-ready" onclick="updateOrderStatus('${order.orderId}', 'Готово к выдаче')">Готово к выдаче</button>
                             <button class="status-btn btn-done" onclick="updateOrderStatus('${order.orderId}', 'Выдан')">Заказ выдан</button>
                         </div>
+                        ${remindBtnHtml}
                     </div>
                 `;
             });
             container.innerHTML = html;
         }
 
-        // АДМИН: Создание нового заказа
+        // СОЗДАНИЕ НОВОГО ЗАКАЗА
         async function createNewOrder() {
             const name = document.getElementById('admin-client-name').value.trim();
             const phone = document.getElementById('admin-client-phone').value.trim();
             const clientTgId = document.getElementById('admin-client-tgid').value.trim();
             const basket = document.getElementById('admin-basket-select').value;
-            const amount = document.getElementById('admin-order-amount').value.trim();
+            const priceSum = Number(document.getElementById('admin-price-sum').value || 0);
+            const discount = document.getElementById('admin-discount-input').value.trim() || '0%';
+            const finalSum = Number(document.getElementById('admin-final-sum-display').innerText || 0);
+            
+            const sourceSelectVal = document.getElementById('admin-client-source').value;
+            const source = isKnownClient ? knownClientSource : sourceSelectVal;
 
-            if (!name || !phone || !basket || !amount) {
-                tg.showAlert('Пожалуйста, заполните Имя, Телефон, выберите Корзину и укажите Сумму заказа.');
+            if (!name || !phone || !basket || priceSum <= 0) {
+                tg.showAlert('Пожалуйста, укажите Имя, Телефон, выберите Корзину и наберите Сумму заказа.');
+                return;
+            }
+
+            if (!isKnownClient && !source) {
+                tg.showAlert('Для нового клиента обязательно выберите пункт «Откуда о нас узнали?»');
                 return;
             }
 
@@ -695,19 +1014,20 @@
                         name: name,
                         phone: phone,
                         clientTgId: clientTgId,
+                        source: source,
                         basket: basket,
-                        amount: amount
+                        category: selectedCategory,
+                        priceSum: priceSum,
+                        discount: discount,
+                        finalSum: finalSum,
+                        paymentMethod: selectedPayment
                     })
                 });
                 const resData = await response.json();
 
                 if (resData.status === 'ok') {
-                    tg.showAlert(`Заказ принят! Корзина «${basket}» закреплена за клиентом.`);
-                    document.getElementById('admin-user-select').value = '';
-                    document.getElementById('admin-client-name').value = '';
-                    document.getElementById('admin-client-phone').value = '';
-                    document.getElementById('admin-client-tgid').value = '';
-                    document.getElementById('admin-order-amount').value = '';
+                    tg.showAlert(`Заказ принят! Корзина «${basket}». К оплате: ${finalSum} ₽.`);
+                    resetAdminForm();
                     await fetchAppData();
                 } else {
                     tg.showAlert('Ошибка: ' + (resData.message || 'Не удалось создать заказ'));
@@ -720,7 +1040,7 @@
             }
         }
 
-        // АДМИН: Смена статуса заказа
+        // СМЕНА СТАТУСА ЗАКАЗА
         async function updateOrderStatus(orderId, newStatus) {
             try {
                 const response = await fetch(SCRIPT_URL, {
@@ -739,6 +1059,29 @@
                     await fetchAppData();
                 } else {
                     tg.showAlert('Ошибка при обновлении статуса');
+                }
+            } catch (err) {
+                tg.showAlert('Ошибка соединения со скриптом');
+            }
+        }
+
+        // ОТПРАВКА НАПОМИНАНИЯ (>24 ЧАСОВ)
+        async function sendForgottenReminder(orderId) {
+            try {
+                const response = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                    body: JSON.stringify({
+                        action: 'sendReminder',
+                        orderId: orderId
+                    })
+                });
+                const resData = await response.json();
+
+                if (resData.status === 'ok') {
+                    tg.showAlert('Напоминание успешно отправлено клиенту в Telegram!');
+                } else {
+                    tg.showAlert('Ошибка: ' + (resData.message || 'Не удалось отправить'));
                 }
             } catch (err) {
                 tg.showAlert('Ошибка соединения со скриптом');
