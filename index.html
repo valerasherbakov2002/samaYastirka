@@ -68,35 +68,11 @@
             box-shadow: 0 4px 12px rgba(51, 144, 236, 0.25);
             text-align: left;
         }
-        .active-order-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 8px;
-        }
-        .active-order-label {
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            opacity: 0.9;
-            font-weight: 600;
-        }
-        .status-badge {
-            background: rgba(255, 255, 255, 0.25);
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: bold;
-        }
-        .active-order-basket {
-            font-size: 20px;
-            font-weight: bold;
-            margin: 4px 0;
-        }
-        .active-order-sum {
-            font-size: 13px;
-            opacity: 0.9;
-        }
+        .active-order-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+        .active-order-label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; opacity: 0.9; font-weight: 600; }
+        .status-badge { background: rgba(255, 255, 255, 0.25); padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: bold; }
+        .active-order-basket { font-size: 20px; font-weight: bold; margin: 4px 0; }
+        .active-order-sum { font-size: 13px; opacity: 0.9; }
 
         /* ПРОФИЛЬ И ЛОЯЛЬНОСТЬ */
         .profile-header { text-align: center; padding: 10px 0 20px 0; }
@@ -140,6 +116,22 @@
             padding: 16px;
             margin-bottom: 16px;
             box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        }
+        .qr-scan-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--tg-theme-button-color, #3390ec);
+            color: #ffffff;
+            border: none;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
         .form-group { margin-bottom: 12px; }
         .form-label { display: block; font-size: 13px; color: #666; margin-bottom: 6px; font-weight: 500; }
@@ -205,7 +197,6 @@
 
     <!-- СТРАНИЦА 1: Каталог -->
     <div id="catalog" class="page active">
-        <!-- Динамический блок активного заказа на главной -->
         <div id="active-orders-main"></div>
 
         <div class="categories-scroll">
@@ -271,7 +262,6 @@
             <h2 id="user-name" style="margin: 0;">Загрузка...</h2>
         </div>
 
-        <!-- Динамический блок активного заказа в профиле -->
         <div id="active-orders-profile"></div>
         
         <div class="loyalty-card">
@@ -336,8 +326,13 @@
         <div class="admin-card">
             <h3 style="margin-top: 0; margin-bottom: 14px;">➕ Принять вещи</h3>
             
+            <!-- Кнопка сканирования QR-кода -->
+            <button type="button" class="qr-scan-btn" onclick="scanClientQR()">
+                📷 Сканировать QR-код клиента
+            </button>
+
             <div class="form-group">
-                <label class="form-label">Выбрать клиента из базы бота (необязательно):</label>
+                <label class="form-label">Или выбрать клиента из базы бота:</label>
                 <select id="admin-user-select" class="form-select" onchange="onSelectExistingUser()">
                     <option value="">-- Новый клиент / Ввести вручную --</option>
                 </select>
@@ -354,8 +349,8 @@
             </div>
 
             <div class="form-group">
-                <label class="form-label">Telegram ID клиента (для пуш-уведомлений)</label>
-                <input type="text" id="admin-client-tgid" class="form-input" placeholder="Подтянется из списка или с QR-кода">
+                <label class="form-label">Telegram ID клиента (заполняется автоматически)</label>
+                <input type="text" id="admin-client-tgid" class="form-input" placeholder="Отсканируйте QR или выберите из списка">
             </div>
 
             <div class="form-group">
@@ -425,7 +420,6 @@
                 colorDark : "#000000", colorLight : "#ffffff", correctLevel : QRCode.CorrectLevel.H
             });
 
-            // Показываем вкладку Админ, если ID входит в список
             if (ADMIN_IDS.includes(currentTgId)) {
                 document.getElementById('admin-tab-btn').style.display = 'block';
             }
@@ -489,7 +483,6 @@
 
             document.getElementById('total-washes').innerText = currentWashes;
 
-            // Сброс классов точек перед пересчетом
             for (let i = 0; i < tiers.length; i++) {
                 document.getElementById('ms-' + i).classList.remove('reached');
             }
@@ -521,6 +514,38 @@
             }, 100);
         }
 
+        // СКАНЕР QR-КОДА КЛИЕНТА В АДМИНКЕ
+        function scanClientQR() {
+            if (!tg.showScanQrPopup) {
+                tg.showAlert('Сканер QR-кодов не поддерживается на вашей версии Telegram.');
+                return;
+            }
+
+            tg.showScanQrPopup({ text: 'Наведите камеру на QR-код в профиле клиента' }, function(qrText) {
+                if (qrText) {
+                    const scannedId = String(qrText).trim();
+                    tg.closeScanQrPopup();
+
+                    // Подставляем отсканированный ID в поле
+                    document.getElementById('admin-client-tgid').value = scannedId;
+
+                    // Ищем клиента в базе, чтобы автоматически подтянуть Имя и Телефон
+                    const foundIndex = cachedUsers.findIndex(u => String(u.tgId) === scannedId);
+                    if (foundIndex !== -1) {
+                        const foundUser = cachedUsers[foundIndex];
+                        document.getElementById('admin-user-select').value = foundIndex;
+                        document.getElementById('admin-client-name').value = foundUser.name || '';
+                        document.getElementById('admin-client-phone').value = foundUser.phone || '';
+                        tg.showAlert(`Клиент найден: ${foundUser.name}`);
+                    } else {
+                        document.getElementById('admin-user-select').value = '';
+                        tg.showAlert(`QR-код считан (ID: ${scannedId}). Введите имя и телефон клиента.`);
+                    }
+                    return true;
+                }
+            });
+        }
+
         // ЗАГРУЗКА ДАННЫХ ИЗ GOOGLE ТАБЛИЦЫ
         async function fetchAppData() {
             try {
@@ -529,14 +554,10 @@
                 const data = await response.json();
 
                 if (data.status === 'ok') {
-                    // 1. Обновляем количество стирок клиента
                     currentWashesCount = data.completedWashes || 0;
                     updateLoyaltyProgress(currentWashesCount);
-
-                    // 2. Отрисовываем активные заказы клиента
                     renderClientActiveOrders(data.clientActiveOrders || []);
 
-                    // 3. Если пользователь админ — обновляем админ-панель
                     if (ADMIN_IDS.includes(currentTgId)) {
                         cachedUsers = data.users || [];
                         renderAdminUsersSelect(cachedUsers);
@@ -604,7 +625,7 @@
             }
         }
 
-        // АДМИН: Заполнение выпадающего списка корзин (морских обитателей)
+        // АДМИН: Заполнение выпадающего списка корзин
         function renderAdminBasketsSelect(baskets, occupied) {
             const select = document.getElementById('admin-basket-select');
             select.innerHTML = '<option value="">-- Выберите корзину --</option>';
@@ -682,13 +703,11 @@
 
                 if (resData.status === 'ok') {
                     tg.showAlert(`Заказ принят! Корзина «${basket}» закреплена за клиентом.`);
-                    // Очищаем поля формы
                     document.getElementById('admin-user-select').value = '';
                     document.getElementById('admin-client-name').value = '';
                     document.getElementById('admin-client-phone').value = '';
                     document.getElementById('admin-client-tgid').value = '';
                     document.getElementById('admin-order-amount').value = '';
-                    // Перезагружаем данные
                     await fetchAppData();
                 } else {
                     tg.showAlert('Ошибка: ' + (resData.message || 'Не удалось создать заказ'));
@@ -726,7 +745,6 @@
             }
         }
 
-        // Запускаем загрузку данных при старте приложения
         fetchAppData();
     </script>
 </body>
