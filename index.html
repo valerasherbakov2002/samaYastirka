@@ -103,9 +103,54 @@
         
         #qrcode { display: flex; justify-content: center; margin: 20px 0; }
         
-        /* КОНТАКТЫ */
+        /* КОНТАКТЫ И КАРТОЧКА ФАСАДА */
         #contacts { text-align: center; }
-        .contact-block { background-color: var(--tg-theme-secondary-bg-color, #ffffff); border-radius: 12px; padding: 16px; margin-bottom: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .contact-block { 
+            background-color: var(--tg-theme-secondary-bg-color, #ffffff); 
+            border-radius: 12px; 
+            padding: 16px; 
+            margin-bottom: 12px; 
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05); 
+        }
+        .facade-image {
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
+            border-radius: 10px;
+            display: block;
+            margin-bottom: 14px;
+            background-color: #e5e5ea;
+        }
+        .address-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--tg-theme-text-color, #000000);
+            margin-bottom: 6px;
+            line-height: 1.35;
+        }
+        .address-hint {
+            font-size: 13px;
+            color: var(--tg-theme-hint-color, #777777);
+            margin-bottom: 16px;
+            line-height: 1.4;
+        }
+        .route-btn {
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 13px 16px;
+            background-color: var(--tg-theme-button-color, #3390ec);
+            color: var(--tg-theme-button-text-color, #ffffff);
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 700;
+            box-shadow: 0 2px 8px rgba(51, 144, 236, 0.25);
+            transition: opacity 0.15s ease;
+        }
+        .route-btn:active {
+            opacity: 0.85;
+        }
         .phone-link { color: var(--tg-theme-text-color, #000000); text-decoration: none; font-size: 16px; font-weight: 500; display: inline-block; margin-bottom: 8px; user-select: text; -webkit-user-select: text; }
         .contact-link { color: var(--tg-theme-button-color, #3390ec); text-decoration: none; font-weight: bold; font-size: 16px; }
 
@@ -411,6 +456,25 @@
     <div id="contacts" class="page">
         <h2 style="margin-bottom: 24px;">Связь с нами</h2>
         
+        <!-- НОВАЯ КАРТОЧКА: Как нас найти -->
+        <div class="contact-block">
+            <!-- Подставьте имя вашего файла с фото фасада в атрибут src ниже -->
+            <img src="XL (1).jpeg" alt="Фасад прачечной СамаЯстирка" class="facade-image">
+            
+            <div class="address-title">
+                📍 г. Владикавказ, ул. Курсантов-Кировцев, 25
+            </div>
+            
+            <div class="address-hint">
+                Ориентир — Аптека Апрель и Обои Victoria, вход слева по стрелке на вывеске
+            </div>
+            
+            <!-- Ссылка на Яндекс Карты в атрибуте href -->
+            <a href="https://yandex.ru/maps/org/samayastirka/233708420522/?ll=44.617003%2C43.051245&z=16.44" target="_blank" class="route-btn">
+                🗺 Построить маршрут в Яндекс Картах
+            </a>
+        </div>
+
         <div class="contact-block">
             <div style="font-weight: bold; margin-bottom: 12px; color: gray;">📞 Телефоны:</div>
             <a href="tel:+79931825294" class="phone-link">+7 (993) 182-52-94</a><br>
@@ -588,7 +652,6 @@
 
         let currentWashesCount = 0;
         let cachedUsers = [];
-        // Массив выбранных категорий (поддержка мультивыбора)
         let selectedCategories = ['Повседневное'];
         let selectedPayment = 'Перевод СБП';
         let isKnownClient = false;
@@ -877,7 +940,6 @@
             document.getElementById('admin-price-sum').value = '0';
             document.getElementById('admin-discount-input').value = '0%';
             
-            // Сброс мультивыбора категорий к "Повседневное"
             selectedCategories = ['Повседневное'];
             document.querySelectorAll('#category-chips .quick-chip').forEach(c => {
                 if (c.getAttribute('data-cat') === 'Повседневное') {
@@ -898,11 +960,9 @@
         function toggleCategoryChip(el, category) {
             const index = selectedCategories.indexOf(category);
             if (index > -1) {
-                // Убираем категорию, если она уже выбрана
                 selectedCategories.splice(index, 1);
                 el.classList.remove('active');
             } else {
-                // Добавляем категорию в массив выбранных
                 selectedCategories.push(category);
                 el.classList.add('active');
             }
@@ -1037,7 +1097,7 @@
                         clientTgId: clientTgId,
                         source: source,
                         basket: basket,
-                        category: selectedCategories.join(', '), // Объединяем выбранные категории через запятую
+                        category: selectedCategories.join(', '),
                         priceSum: priceSum,
                         discount: discount,
                         finalSum: finalSum,
