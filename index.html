@@ -196,6 +196,7 @@
             font-weight: 600;
             cursor: pointer;
             user-select: none;
+            transition: all 0.15s ease;
         }
         .quick-chip.active {
             background-color: var(--tg-theme-button-color, #3390ec);
@@ -491,14 +492,20 @@
                 </select>
             </div>
 
-            <!-- Категория вещей -->
+            <!-- Категория вещей (МНОЖЕСТВЕННЫЙ ВЫБОР) -->
             <div class="form-group">
-                <label class="form-label">Категория вещей *</label>
+                <label class="form-label">Категории вещей (можно выбрать несколько) *</label>
                 <div class="chips-wrap" id="category-chips">
-                    <div class="quick-chip active" onclick="selectCategoryChip(this, 'Повседневное')">👕 Повседневное</div>
-                    <div class="quick-chip" onclick="selectCategoryChip(this, 'Пуховик')">🧥 Пуховик</div>
-                    <div class="quick-chip" onclick="selectCategoryChip(this, 'Плед и одеяло')">🛏️ Плед и одеяло</div>
-                    <div class="quick-chip" onclick="selectCategoryChip(this, 'Коммерческое')">🏢 Коммерческое</div>
+                    <div class="quick-chip active" data-cat="Повседневное" onclick="toggleCategoryChip(this, 'Повседневное')">👕 Повседневное</div>
+                    <div class="quick-chip" data-cat="Зимняя" onclick="toggleCategoryChip(this, 'Зимняя')">🧥 Зимняя</div>
+                    <div class="quick-chip" data-cat="Постельное" onclick="toggleCategoryChip(this, 'Постельное')">🛏️ Постельное</div>
+                    <div class="quick-chip" data-cat="Коммерческое" onclick="toggleCategoryChip(this, 'Коммерческое')">🏢 Коммерческое</div>
+                    <div class="quick-chip" data-cat="Ковер" onclick="toggleCategoryChip(this, 'Ковер')">🧶 Ковер</div>
+                    <div class="quick-chip" data-cat="Занавески" onclick="toggleCategoryChip(this, 'Занавески')">🪟 Занавески</div>
+                    <div class="quick-chip" data-cat="Плед" onclick="toggleCategoryChip(this, 'Плед')">🛋️ Плед</div>
+                    <div class="quick-chip" data-cat="Одеяло" onclick="toggleCategoryChip(this, 'Одеяло')">☁️ Одеяло</div>
+                    <div class="quick-chip" data-cat="Игрушки" onclick="toggleCategoryChip(this, 'Игрушки')">🧸 Игрушки</div>
+                    <div class="quick-chip" data-cat="Другое" onclick="toggleCategoryChip(this, 'Другое')">📦 Другое</div>
                 </div>
             </div>
 
@@ -581,7 +588,8 @@
 
         let currentWashesCount = 0;
         let cachedUsers = [];
-        let selectedCategory = 'Повседневное';
+        // Массив выбранных категорий (поддержка мультивыбора)
+        let selectedCategories = ['Повседневное'];
         let selectedPayment = 'Перевод СБП';
         let isKnownClient = false;
         let knownClientSource = '';
@@ -650,7 +658,6 @@
             document.getElementById('modal-old-price').innerText = data.old;
         }
 
-        // Вычисление процента скидки по числу стирок
         function getDiscountPercentByWashes(washes) {
             let disc = 0;
             for (let i = 0; i < LOYALTY_TIERS.length; i++) {
@@ -722,7 +729,6 @@
             }
         }
 
-        // Отрисовка блока «Активный заказ» у клиента
         function renderClientActiveOrders(orders) {
             const mainContainer = document.getElementById('active-orders-main');
             const profileContainer = document.getElementById('active-orders-profile');
@@ -793,7 +799,6 @@
             box.style.display = 'block';
         }
 
-        // Применение выбранного клиента из поиска или QR
         function applySelectedClient(u) {
             document.getElementById('search-results-box').style.display = 'none';
             document.getElementById('admin-smart-search').value = '';
@@ -806,16 +811,13 @@
             const discountPercent = getDiscountPercentByWashes(washes);
             const visitNum = washes + 1;
 
-            // Показываем подсказку по лояльности
             const banner = document.getElementById('loyalty-hint-banner');
             banner.style.display = 'block';
             banner.innerHTML = `🎉 Постоянный клиент: <strong>${visitNum}-й визит!</strong> (Завершено стирок: ${washes}).<br>Автоматически применена скидка лояльности: <strong>${discountPercent}%</strong>`;
 
-            // Автоматически подставляем процент скидки и пересчитываем сумму
             document.getElementById('admin-discount-input').value = discountPercent + '%';
             recalculateFinalSum();
 
-            // Если у клиента уже есть визиты или указан источник — скрываем поле "Откуда о нас узнали?"
             if (washes > 0 || u.source) {
                 isKnownClient = true;
                 knownClientSource = u.source || 'Постоянный клиент';
@@ -827,7 +829,6 @@
             }
         }
 
-        // Если админ вводит телефон вручную — проверяем совпадение
         function onPhoneManualInput() {
             const raw = document.getElementById('admin-client-phone').value.replace(/\D/g, '');
             if (raw.length >= 10) {
@@ -839,7 +840,6 @@
             }
         }
 
-        // Сканер QR-кода
         function scanClientQR() {
             if (!tg.showScanQrPopup) {
                 tg.showAlert('Сканер QR-кодов не поддерживается на вашем устройстве.');
@@ -865,7 +865,6 @@
             });
         }
 
-        // Сброс формы админа
         function resetAdminForm() {
             document.getElementById('admin-smart-search').value = '';
             document.getElementById('search-results-box').style.display = 'none';
@@ -877,14 +876,38 @@
             document.getElementById('source-form-group').style.display = 'block';
             document.getElementById('admin-price-sum').value = '0';
             document.getElementById('admin-discount-input').value = '0%';
+            
+            // Сброс мультивыбора категорий к "Повседневное"
+            selectedCategories = ['Повседневное'];
+            document.querySelectorAll('#category-chips .quick-chip').forEach(c => {
+                if (c.getAttribute('data-cat') === 'Повседневное') {
+                    c.classList.add('active');
+                } else {
+                    c.classList.remove('active');
+                }
+            });
+
             isKnownClient = false;
             knownClientSource = '';
             recalculateFinalSum();
         }
 
         // ==========================================
-        // БЫСТРЫЕ КНОПКИ ЦЕН И АВТОРАСЧЕТ СКИДКИ
+        // МУЛЬТИВЫБОР КАТЕГОРИЙ, ЦЕНЫ И ОПЛАТА
         // ==========================================
+        function toggleCategoryChip(el, category) {
+            const index = selectedCategories.indexOf(category);
+            if (index > -1) {
+                // Убираем категорию, если она уже выбрана
+                selectedCategories.splice(index, 1);
+                el.classList.remove('active');
+            } else {
+                // Добавляем категорию в массив выбранных
+                selectedCategories.push(category);
+                el.classList.add('active');
+            }
+        }
+
         function addPricePreset(amount) {
             const input = document.getElementById('admin-price-sum');
             const current = Number(input.value || 0);
@@ -913,12 +936,6 @@
             document.getElementById('admin-final-sum-display').innerText = Math.max(0, finalSum);
         }
 
-        function selectCategoryChip(el, category) {
-            selectedCategory = category;
-            document.querySelectorAll('#category-chips .quick-chip').forEach(c => c.classList.remove('active'));
-            el.classList.add('active');
-        }
-
         function selectPaymentChip(el, payment) {
             selectedPayment = payment;
             document.querySelectorAll('#payment-chips .quick-chip').forEach(c => c.classList.remove('active'));
@@ -936,7 +953,6 @@
             });
         }
 
-        // Отрисовка активных заказов и индикатора "Забытые вещи" (>24 ч)
         function renderAdminActiveOrders(orders) {
             const container = document.getElementById('admin-active-orders-list');
             if (!orders || orders.length === 0) {
@@ -963,7 +979,7 @@
                         </div>
                         <div class="admin-order-details">
                             👤 <strong>${order.name}</strong> (${order.phone || 'Без телефона'})<br>
-                            📦 Категория: ${order.category || '—'} | 💳 ${order.paymentMethod || '—'}<br>
+                            📦 Категории: ${order.category || '—'} | 💳 ${order.paymentMethod || '—'}<br>
                             💰 По прайсу: ${order.priceSum} ₽ | Скидка: ${order.discount} | <strong>Итого: ${order.finalSum} ₽</strong>
                         </div>
                         <div class="admin-status-btns">
@@ -996,6 +1012,11 @@
                 return;
             }
 
+            if (selectedCategories.length === 0) {
+                tg.showAlert('Выберите хотя бы одну категорию вещей!');
+                return;
+            }
+
             if (!isKnownClient && !source) {
                 tg.showAlert('Для нового клиента обязательно выберите пункт «Откуда о нас узнали?»');
                 return;
@@ -1016,7 +1037,7 @@
                         clientTgId: clientTgId,
                         source: source,
                         basket: basket,
-                        category: selectedCategory,
+                        category: selectedCategories.join(', '), // Объединяем выбранные категории через запятую
                         priceSum: priceSum,
                         discount: discount,
                         finalSum: finalSum,
