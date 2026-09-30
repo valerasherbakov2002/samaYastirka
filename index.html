@@ -59,15 +59,7 @@
         .order-btn { width: 100%; padding: 16px; background-color: var(--tg-theme-button-color, #3390ec); color: #ffffff; border: none; border-radius: 12px; font-size: 16px; font-weight: bold; cursor: pointer; }
 
         /* БЛОК АКТИВНОГО ЗАКАЗА КЛИЕНТА */
-        .active-order-card {
-            background: linear-gradient(135deg, #3390ec 0%, #1d6fa5 100%);
-            color: #ffffff;
-            border-radius: 16px;
-            padding: 16px;
-            margin-bottom: 16px;
-            box-shadow: 0 4px 12px rgba(51, 144, 236, 0.25);
-            text-align: left;
-        }
+        .active-order-card { background: linear-gradient(135deg, #3390ec 0%, #1d6fa5 100%); color: #ffffff; border-radius: 16px; padding: 16px; margin-bottom: 16px; box-shadow: 0 4px 12px rgba(51, 144, 236, 0.25); text-align: left; }
         .active-order-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
         .active-order-label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; opacity: 0.9; font-weight: 600; }
         .status-badge { background: rgba(255, 255, 255, 0.25); padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: bold; }
@@ -76,23 +68,12 @@
 
         /* ПРОФИЛЬ И ЛОЯЛЬНОСТЬ */
         .profile-header { text-align: center; padding: 10px 0 20px 0; }
-        .profile-avatar { 
-            width: 150px; 
-            height: 150px; 
-            border-radius: 50%; 
-            object-fit: cover; 
-            margin-bottom: 12px; 
-            background-color: #ccc; 
-            border: 3px solid var(--tg-theme-button-color, #3390ec);
-            padding: 2px;
-        }
+        .profile-avatar { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 12px; background-color: #ccc; border: 3px solid var(--tg-theme-button-color, #3390ec); padding: 2px; }
         .loyalty-card { background-color: var(--tg-theme-secondary-bg-color, #ffffff); border-radius: 12px; padding: 20px; text-align: center; margin-top: 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
-        
         .progress-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 24px; text-align: left; }
         .progress-title { font-size: 14px; color: var(--tg-theme-hint-color, #999); }
         .progress-discount { font-size: 20px; font-weight: bold; color: var(--tg-theme-button-color, #3390ec); }
         .progress-subtitle { font-size: 12px; color: var(--tg-theme-hint-color, #999); text-align: right; }
-        
         .progress-track { height: 8px; background-color: var(--tg-theme-bg-color, #f4f4f5); border-radius: 4px; position: relative; margin: 0 10px 40px 10px; }
         .progress-fill { height: 100%; background-color: var(--tg-theme-button-color, #3390ec); border-radius: 4px; width: 0%; transition: width 0.8s ease-out; }
         .milestone { position: absolute; top: -4px; display: flex; flex-direction: column; align-items: center; transform: translateX(-50%); }
@@ -100,248 +81,60 @@
         .milestone.reached .milestone-dot { background-color: var(--tg-theme-button-color, #3390ec); border-color: var(--tg-theme-button-color, #3390ec); }
         .milestone-text { margin-top: 8px; font-size: 11px; color: var(--tg-theme-hint-color, #999); white-space: nowrap; }
         .milestone.reached .milestone-text { color: var(--tg-theme-text-color, #000); font-weight: 500; }
-        
         #qrcode { display: flex; justify-content: center; margin: 20px 0; }
         
         /* КОНТАКТЫ И КАРТОЧКА ФАСАДА */
         #contacts { text-align: center; }
-        .contact-block { 
-            background-color: var(--tg-theme-secondary-bg-color, #ffffff); 
-            border-radius: 12px; 
-            padding: 16px; 
-            margin-bottom: 12px; 
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05); 
-        }
-        .facade-image {
-            width: 100%;
-            height: auto; /* Полное отображение без обрезки */
-            border-radius: 10px;
-            display: block;
-            margin-bottom: 14px;
-            background-color: #e5e5ea;
-        }
-        .address-title {
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--tg-theme-text-color, #000000);
-            margin-bottom: 6px;
-            line-height: 1.35;
-        }
-        .address-hint {
-            font-size: 13px;
-            color: var(--tg-theme-hint-color, #777777);
-            margin-bottom: 16px;
-            line-height: 1.4;
-        }
-        .route-btn {
-            display: block;
-            width: 100%;
-            box-sizing: border-box;
-            padding: 13px 16px;
-            background-color: var(--tg-theme-button-color, #3390ec);
-            color: var(--tg-theme-button-text-color, #ffffff);
-            text-decoration: none;
-            border-radius: 10px;
-            font-size: 15px;
-            font-weight: 700;
-            box-shadow: 0 2px 8px rgba(51, 144, 236, 0.25);
-            transition: opacity 0.15s ease;
-        }
-        .route-btn:active {
-            opacity: 0.85;
-        }
+        .contact-block { background-color: var(--tg-theme-secondary-bg-color, #ffffff); border-radius: 12px; padding: 16px; margin-bottom: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .facade-image { width: 100%; height: auto; border-radius: 10px; display: block; margin-bottom: 14px; background-color: #e5e5ea; }
+        .address-title { font-size: 16px; font-weight: 700; color: var(--tg-theme-text-color, #000000); margin-bottom: 6px; line-height: 1.35; }
+        .address-hint { font-size: 13px; color: var(--tg-theme-hint-color, #777777); margin-bottom: 16px; line-height: 1.4; }
+        .route-btn { display: block; width: 100%; box-sizing: border-box; padding: 13px 16px; background-color: var(--tg-theme-button-color, #3390ec); color: var(--tg-theme-button-text-color, #ffffff); text-decoration: none; border-radius: 10px; font-size: 15px; font-weight: 700; box-shadow: 0 2px 8px rgba(51, 144, 236, 0.25); transition: opacity 0.15s ease; }
+        .route-btn:active { opacity: 0.85; }
         .phone-link { color: var(--tg-theme-text-color, #000000); text-decoration: none; font-size: 16px; font-weight: 500; display: inline-block; margin-bottom: 8px; user-select: text; -webkit-user-select: text; }
         .contact-link { color: var(--tg-theme-button-color, #3390ec); text-decoration: none; font-weight: bold; font-size: 16px; }
 
         /* ПРОДВИНУТАЯ АДМИН-ПАНЕЛЬ */
-        .admin-card {
-            background-color: var(--tg-theme-secondary-bg-color, #ffffff);
-            border-radius: 14px;
-            padding: 16px;
-            margin-bottom: 16px;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-        }
-        .qr-scan-btn {
-            width: 100%;
-            padding: 12px;
-            background-color: var(--tg-theme-button-color, #3390ec);
-            color: #ffffff;
-            border: none;
-            border-radius: 10px;
-            font-size: 15px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
+        .admin-card { background-color: var(--tg-theme-secondary-bg-color, #ffffff); border-radius: 14px; padding: 16px; margin-bottom: 16px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+        .qr-scan-btn { width: 100%; padding: 12px; background-color: var(--tg-theme-button-color, #3390ec); color: #ffffff; border: none; border-radius: 10px; font-size: 15px; font-weight: bold; cursor: pointer; margin-bottom: 12px; display: flex; align-items: center; justify-content: center; gap: 8px; }
         .form-group { margin-bottom: 14px; position: relative; }
         .form-label { display: block; font-size: 13px; color: #666; margin-bottom: 6px; font-weight: 600; }
-        .form-input, .form-select {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #d1d5db;
-            border-radius: 10px;
-            font-size: 15px;
-            box-sizing: border-box;
-            background-color: var(--tg-theme-bg-color, #fff);
-            color: var(--tg-theme-text-color, #000);
-        }
+        .form-input, .form-select { width: 100%; padding: 12px; border: 1px solid #d1d5db; border-radius: 10px; font-size: 15px; box-sizing: border-box; background-color: var(--tg-theme-bg-color, #fff); color: var(--tg-theme-text-color, #000); }
         
-        /* Выпадающий список автопоиска */
-        .search-results-dropdown {
-            background: var(--tg-theme-secondary-bg-color, #fff);
-            border: 1px solid #3390ec;
-            border-radius: 10px;
-            max-height: 180px;
-            overflow-y: auto;
-            margin-top: 4px;
-            display: none;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
-        }
-        .search-result-item {
-            padding: 10px 12px;
-            border-bottom: 1px solid #eee;
-            cursor: pointer;
-            font-size: 14px;
-        }
+        .search-results-dropdown { background: var(--tg-theme-secondary-bg-color, #fff); border: 1px solid #3390ec; border-radius: 10px; max-height: 180px; overflow-y: auto; margin-top: 4px; display: none; box-shadow: 0 4px 12px rgba(0,0,0,0.12); }
+        .search-result-item { padding: 10px 12px; border-bottom: 1px solid #eee; cursor: pointer; font-size: 14px; }
         .search-result-item:last-child { border-bottom: none; }
         .search-result-item:active { background-color: #e5f1fb; }
 
-        /* Плашка подсказки лояльности клиента */
-        .loyalty-hint-banner {
-            display: none;
-            background-color: #ecfdf5;
-            border: 1px solid #10b981;
-            color: #065f46;
-            padding: 10px 12px;
-            border-radius: 10px;
-            font-size: 13px;
-            font-weight: 600;
-            margin-bottom: 14px;
-            line-height: 1.4;
-        }
+        .loyalty-hint-banner { display: none; background-color: #ecfdf5; border: 1px solid #10b981; color: #065f46; padding: 10px 12px; border-radius: 10px; font-size: 13px; font-weight: 600; margin-bottom: 14px; line-height: 1.4; }
 
-        /* Быстрые чипсы (Категории, Цены, Оплата) */
-        .chips-wrap {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-        .quick-chip {
-            padding: 9px 12px;
-            border-radius: 10px;
-            border: 1px solid #d1d5db;
-            background-color: var(--tg-theme-bg-color, #f9fafb);
-            color: var(--tg-theme-text-color, #111);
-            font-size: 13px;
-            font-weight: 600;
-            cursor: pointer;
-            user-select: none;
-            transition: all 0.15s ease;
-        }
-        .quick-chip.active {
-            background-color: var(--tg-theme-button-color, #3390ec);
-            color: #ffffff;
-            border-color: var(--tg-theme-button-color, #3390ec);
-        }
-        .price-chip {
-            background-color: #eff6ff;
-            border-color: #93c5fd;
-            color: #1d4ed8;
-        }
-        .price-chip:active {
-            transform: scale(0.97);
-        }
-        .price-chip-reset {
-            background-color: #fef2f2;
-            border-color: #fca5a5;
-            color: #dc2626;
-        }
+        .chips-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
+        .quick-chip { padding: 9px 12px; border-radius: 10px; border: 1px solid #d1d5db; background-color: var(--tg-theme-bg-color, #f9fafb); color: var(--tg-theme-text-color, #111); font-size: 13px; font-weight: 600; cursor: pointer; user-select: none; transition: all 0.15s ease; }
+        .quick-chip.active { background-color: var(--tg-theme-button-color, #3390ec); color: #ffffff; border-color: var(--tg-theme-button-color, #3390ec); }
+        .price-chip { background-color: #eff6ff; border-color: #93c5fd; color: #1d4ed8; }
+        .price-chip:active { transform: scale(0.97); }
+        .price-chip-reset { background-color: #fef2f2; border-color: #fca5a5; color: #dc2626; }
 
-        /* Итоговый блок к оплате */
-        .final-sum-box {
-            background-color: #f8fafc;
-            border: 1px solid #e2e8f0;
-            border-radius: 12px;
-            padding: 12px 16px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 14px;
-        }
+        .final-sum-box { background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 12px 16px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
         .final-sum-label { font-size: 14px; font-weight: 600; color: #475569; }
         .final-sum-value { font-size: 22px; font-weight: 800; color: #16a34a; }
 
-        .admin-submit-btn {
-            width: 100%;
-            padding: 15px;
-            background-color: #16a34a;
-            color: #fff;
-            border: none;
-            border-radius: 12px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 4px;
-        }
+        .admin-submit-btn { width: 100%; padding: 15px; background-color: #16a34a; color: #fff; border: none; border-radius: 12px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 4px; }
         .admin-submit-btn:disabled { background-color: #9ca3af; }
         
-        /* Карточки активных заказов и индикатор Забытых вещей */
-        .admin-order-item {
-            border: 1px solid #e5e5ea;
-            border-radius: 12px;
-            padding: 14px;
-            margin-bottom: 12px;
-            background-color: var(--tg-theme-secondary-bg-color, #ffffff);
-        }
-        .admin-order-item.forgotten {
-            border: 2px solid #ef4444;
-            background-color: #fef2f2;
-        }
-        .forgotten-badge {
-            display: inline-block;
-            background-color: #ef4444;
-            color: #ffffff;
-            font-size: 11px;
-            font-weight: bold;
-            padding: 3px 8px;
-            border-radius: 6px;
-            margin-bottom: 8px;
-        }
+        .admin-order-item { border: 1px solid #e5e5ea; border-radius: 12px; padding: 14px; margin-bottom: 12px; background-color: var(--tg-theme-secondary-bg-color, #ffffff); }
+        .admin-order-item.forgotten { border: 2px solid #ef4444; background-color: #fef2f2; }
+        .forgotten-badge { display: inline-block; background-color: #ef4444; color: #ffffff; font-size: 11px; font-weight: bold; padding: 3px 8px; border-radius: 6px; margin-bottom: 8px; }
         .admin-order-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
         .admin-basket-title { font-size: 18px; font-weight: bold; color: var(--tg-theme-button-color, #3390ec); }
         .admin-order-status { font-size: 12px; padding: 4px 8px; border-radius: 8px; background: #eee; font-weight: 600; color: #333; }
         .admin-order-details { font-size: 13px; color: #444; margin-bottom: 12px; line-height: 1.5; }
         .admin-status-btns { display: flex; gap: 6px; flex-wrap: wrap; }
-        .status-btn {
-            flex: 1;
-            padding: 10px 8px;
-            border: none;
-            border-radius: 8px;
-            font-size: 12px;
-            font-weight: bold;
-            cursor: pointer;
-            color: #fff;
-            min-width: 85px;
-        }
+        .status-btn { flex: 1; padding: 10px 8px; border: none; border-radius: 8px; font-size: 12px; font-weight: bold; cursor: pointer; color: #fff; min-width: 85px; }
         .btn-drying { background-color: #f59e0b; }
         .btn-ready { background-color: #3390ec; }
         .btn-done { background-color: #10b981; }
-        .btn-remind {
-            width: 100%;
-            margin-top: 8px;
-            padding: 10px;
-            background-color: #ef4444;
-            color: #ffffff;
-            border: none;
-            border-radius: 8px;
-            font-size: 13px;
-            font-weight: bold;
-            cursor: pointer;
-        }
+        .btn-remind { width: 100%; margin-top: 8px; padding: 10px; background-color: #ef4444; color: #ffffff; border: none; border-radius: 8px; font-size: 13px; font-weight: bold; cursor: pointer; }
 
         /* Навигация */
         .tab-bar { position: fixed; bottom: 0; left: 0; right: 0; background-color: var(--tg-theme-secondary-bg-color, #ffffff); display: flex; justify-content: space-around; padding: 10px 0; border-top: 1px solid #e5e5ea; z-index: 50; }
@@ -360,9 +153,13 @@
             <div class="category-chip">Категории ˅</div>
             <div class="category-chip inactive">Зимняя одежда</div>
             <div class="category-chip inactive">Постельное белье</div>
+            <div class="category-chip inactive">Ковры</div>
+            <div class="category-chip inactive">Шторы</div>
+            <div class="category-chip inactive">Игрушки</div>
         </div>
         
         <div class="products-grid">
+            <!-- Зимняя одежда -->
             <div class="product-card" onclick="openProduct('winter')">
                 <div class="favorite-btn">🤍</div>
                 <img src="Gemini_Generated_Image_yytp2lyytp2lyytp.jpeg" alt="Зимняя одежда" class="product-image">
@@ -371,12 +168,44 @@
                     <div class="product-title">Зимняя одежда</div>
                 </div>
             </div>
+            
+            <!-- Постельное белье -->
             <div class="product-card" onclick="openProduct('bedding')">
                 <div class="favorite-btn">🤍</div>
                 <img src="Gemini_Generated_Image_z0rl3zz0rl3zz0rl.jpeg" alt="Постельное белье" class="product-image">
                 <div class="product-info">
                     <div class="price-block"><span class="current-price">300 ₽</span><span class="old-price">500 ₽</span></div>
                     <div class="product-title">Постельное белье</div>
+                </div>
+            </div>
+
+            <!-- Ковер -->
+            <div class="product-card" onclick="openProduct('carpet')">
+                <div class="favorite-btn">🤍</div>
+                <img src="Gemini_Generated_Image_b8vh58b8vh58b8vh.jpeg" alt="Ковер" class="product-image">
+                <div class="product-info">
+                    <div class="price-block"><span class="current-price">300 ₽</span><span class="old-price">500 ₽</span></div>
+                    <div class="product-title">Ковер</div>
+                </div>
+            </div>
+
+            <!-- Шторы/Занавеси -->
+            <div class="product-card" onclick="openProduct('curtains')">
+                <div class="favorite-btn">🤍</div>
+                <img src="Gemini_Generated_Image_9zt449zt449zt449.jpeg" alt="Шторы/Занавеси" class="product-image">
+                <div class="product-info">
+                    <div class="price-block"><span class="current-price">300 ₽</span><span class="old-price">500 ₽</span></div>
+                    <div class="product-title">Шторы/Занавеси</div>
+                </div>
+            </div>
+
+            <!-- Игрушки -->
+            <div class="product-card" onclick="openProduct('toys')">
+                <div class="favorite-btn">🤍</div>
+                <img src="Gemini_Generated_Image_d091kad091kad091.jpeg" alt="Игрушки" class="product-image">
+                <div class="product-info">
+                    <div class="price-block"><span class="current-price">300 ₽</span><span class="old-price">500 ₽</span></div>
+                    <div class="product-title">Игрушки</div>
                 </div>
             </div>
         </div>
@@ -533,7 +362,7 @@
                 <input type="text" id="admin-client-tgid" class="form-input" placeholder="Необязательно, если клиент без бота">
             </div>
 
-            <!-- Динамическое поле "Источник" (Только для новых клиентов) -->
+            <!-- Динамическое поле "Источник" -->
             <div class="form-group" id="source-form-group">
                 <label class="form-label" style="color: #d97706;">🌟 Новый клиент! Откуда о нас узнали? *</label>
                 <select id="admin-client-source" class="form-select">
@@ -553,7 +382,7 @@
                 </select>
             </div>
 
-            <!-- Категория вещей (МНОЖЕСТВЕННЫЙ ВЫБОР) -->
+            <!-- Категория вещей -->
             <div class="form-group">
                 <label class="form-label">Категории вещей (можно выбрать несколько) *</label>
                 <div class="chips-wrap" id="category-chips">
@@ -570,7 +399,7 @@
                 </div>
             </div>
 
-            <!-- Кнопки быстрого набора цены (Quick Chips) -->
+            <!-- Кнопки быстрого набора цены -->
             <div class="form-group">
                 <label class="form-label">Быстрый набор суммы по прайсу (нажимайте для сложения):</label>
                 <div class="chips-wrap" style="margin-bottom: 8px;">
@@ -654,9 +483,13 @@
         let isKnownClient = false;
         let knownClientSource = '';
 
+        // БАЗА ДАННЫХ КАТАЛОГА ТОВАРОВ
         const productsData = {
             winter: { title: "Зимняя одежда", image: "Gemini_Generated_Image_yytp2lyytp2lyytp.jpeg", desc: "Стирка объемной зимней одежды в профессиональной стиральной машине ☃️", prices: { 12: { curr: "300 ₽", old: "500 ₽" }, 15: { curr: "350 ₽", old: "650 ₽" } } },
-            bedding: { title: "Постельное белье", image: "Gemini_Generated_Image_z0rl3zz0rl3zz0rl.jpeg", desc: "Стирка постельного белья в профессиональной стиральной машине 🛏️", prices: { 12: { curr: "300 ₽", old: "500 ₽" }, 15: { curr: "350 ₽", old: "650 ₽" } } }
+            bedding: { title: "Постельное белье", image: "Gemini_Generated_Image_z0rl3zz0rl3zz0rl.jpeg", desc: "Стирка постельного белья в профессиональной стиральной машине 🛏️", prices: { 12: { curr: "300 ₽", old: "500 ₽" }, 15: { curr: "350 ₽", old: "650 ₽" } } },
+            carpet: { title: "Ковер", image: "Gemini_Generated_Image_b8vh58b8vh58b8vh.jpeg", desc: "Бережная стирка ковров в профессиональной стиральной машине 🧶", prices: { 12: { curr: "300 ₽", old: "500 ₽" }, 15: { curr: "350 ₽", old: "650 ₽" } } },
+            curtains: { title: "Шторы/Занавеси", image: "Gemini_Generated_Image_9zt449zt449zt449.jpeg", desc: "Стирка штор и занавесок в профессиональной стиральной машине 🪟", prices: { 12: { curr: "300 ₽", old: "500 ₽" }, 15: { curr: "350 ₽", old: "650 ₽" } } },
+            toys: { title: "Игрушки", image: "Gemini_Generated_Image_d091kad091kad091.jpeg", desc: "Глубокая стирка мягких игрушек в профессиональной стиральной машине 🧸", prices: { 12: { curr: "300 ₽", old: "500 ₽" }, 15: { curr: "350 ₽", old: "650 ₽" } } }
         };
         let currentProductId = 'winter';
 
