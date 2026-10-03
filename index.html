@@ -153,7 +153,6 @@
             <div class="category-chip">Категории ˅</div>
             <div class="category-chip inactive">Зимняя одежда</div>
             <div class="category-chip inactive">Постельное белье</div>
-            <div class="category-chip inactive">Ковры</div>
             <div class="category-chip inactive">Шторы</div>
             <div class="category-chip inactive">Игрушки</div>
         </div>
@@ -176,16 +175,6 @@
                 <div class="product-info">
                     <div class="price-block"><span class="current-price">300 ₽</span><span class="old-price">500 ₽</span></div>
                     <div class="product-title">Постельное белье</div>
-                </div>
-            </div>
-
-            <!-- Ковер -->
-            <div class="product-card" onclick="openProduct('carpet')">
-                <div class="favorite-btn">🤍</div>
-                <img src="Gemini_Generated_Image_b8vh58b8vh58b8vh.jpeg" alt="Ковер" class="product-image">
-                <div class="product-info">
-                    <div class="price-block"><span class="current-price">300 ₽</span><span class="old-price">500 ₽</span></div>
-                    <div class="product-title">Ковер</div>
                 </div>
             </div>
 
@@ -367,10 +356,12 @@
                 <label class="form-label" style="color: #d97706;">🌟 Новый клиент! Откуда о нас узнали? *</label>
                 <select id="admin-client-source" class="form-select">
                     <option value="">-- Выберите источник --</option>
-                    <option value="Яндекс Карты">📍 Яндекс Карты</option>
-                    <option value="Вывеска с улицы">🪧 Вывеска с улицы</option>
+                    <option value="Яндекс карты">📍 Яндекс карты</option>
+                    <option value="2ГИС">🗺️ 2ГИС</option>
+                    <option value="Реклама на баннерах">🪧 Реклама на баннерах</option>
                     <option value="Рекомендация">🤝 Рекомендация</option>
-                    <option value="Соцсети">📱 Соцсети</option>
+                    <option value="Инстаграмм">📱 Инстаграмм</option>
+                    <option value="Авито">🛒 Авито</option>
                 </select>
             </div>
 
@@ -382,7 +373,7 @@
                 </select>
             </div>
 
-            <!-- Категория вещей -->
+            <!-- Категория вещей (МНОЖЕСТВЕННЫЙ ВЫБОР) -->
             <div class="form-group">
                 <label class="form-label">Категории вещей (можно выбрать несколько) *</label>
                 <div class="chips-wrap" id="category-chips">
@@ -390,7 +381,6 @@
                     <div class="quick-chip" data-cat="Зимняя" onclick="toggleCategoryChip(this, 'Зимняя')">🧥 Зимняя</div>
                     <div class="quick-chip" data-cat="Постельное" onclick="toggleCategoryChip(this, 'Постельное')">🛏️ Постельное</div>
                     <div class="quick-chip" data-cat="Коммерческое" onclick="toggleCategoryChip(this, 'Коммерческое')">🏢 Коммерческое</div>
-                    <div class="quick-chip" data-cat="Ковер" onclick="toggleCategoryChip(this, 'Ковер')">🧶 Ковер</div>
                     <div class="quick-chip" data-cat="Занавески" onclick="toggleCategoryChip(this, 'Занавески')">🪟 Занавески</div>
                     <div class="quick-chip" data-cat="Плед" onclick="toggleCategoryChip(this, 'Плед')">🛋️ Плед</div>
                     <div class="quick-chip" data-cat="Одеяло" onclick="toggleCategoryChip(this, 'Одеяло')">☁️ Одеяло</div>
@@ -483,11 +473,10 @@
         let isKnownClient = false;
         let knownClientSource = '';
 
-        // БАЗА ДАННЫХ КАТАЛОГА ТОВАРОВ
+        // БАЗА ДАННЫХ КАТАЛОГА ТОВАРОВ (БЕЗ КОВРА)
         const productsData = {
             winter: { title: "Зимняя одежда", image: "Gemini_Generated_Image_yytp2lyytp2lyytp.jpeg", desc: "Стирка объемной зимней одежды в профессиональной стиральной машине ☃️", prices: { 12: { curr: "300 ₽", old: "500 ₽" }, 15: { curr: "350 ₽", old: "650 ₽" } } },
             bedding: { title: "Постельное белье", image: "Gemini_Generated_Image_z0rl3zz0rl3zz0rl.jpeg", desc: "Стирка постельного белья в профессиональной стиральной машине 🛏️", prices: { 12: { curr: "300 ₽", old: "500 ₽" }, 15: { curr: "350 ₽", old: "650 ₽" } } },
-            carpet: { title: "Ковер", image: "Gemini_Generated_Image_b8vh58b8vh58b8vh.jpeg", desc: "Бережная стирка ковров в профессиональной стиральной машине 🧶", prices: { 12: { curr: "300 ₽", old: "500 ₽" }, 15: { curr: "350 ₽", old: "650 ₽" } } },
             curtains: { title: "Шторы/Занавеси", image: "Gemini_Generated_Image_9zt449zt449zt449.jpeg", desc: "Стирка штор и занавесок в профессиональной стиральной машине 🪟", prices: { 12: { curr: "300 ₽", old: "500 ₽" }, 15: { curr: "350 ₽", old: "650 ₽" } } },
             toys: { title: "Игрушки", image: "Gemini_Generated_Image_d091kad091kad091.jpeg", desc: "Глубокая стирка мягких игрушек в профессиональной стиральной машине 🧸", prices: { 12: { curr: "300 ₽", old: "500 ₽" }, 15: { curr: "350 ₽", old: "650 ₽" } } }
         };
